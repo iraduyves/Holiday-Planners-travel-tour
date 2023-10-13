@@ -1,0 +1,30 @@
+/* eslint-disable react/prop-types */
+import { useId } from "react"
+import css from "./style.module.css"
+
+export default function Input({
+    type = "text",
+    name = "",
+    id = "",
+    classname = "",
+    placeholder,
+    icon,
+    icons,
+    onChange = () => { }
+}) {
+    const inputId = useId()
+    return (
+        <label htmlFor={id ?? inputId} className={css.input}>
+            {icon && <span className={css.icon}>{icon}</span>  }
+            <input
+                type={type}
+                name={name}
+                id={id ?? inputId}
+                className={`${classname}`}
+                placeholder={placeholder}
+                onChange={onChange}
+            />
+            {<span className={css.icon}>{icon}</span> &&icons  }
+        </label>
+    )
+}

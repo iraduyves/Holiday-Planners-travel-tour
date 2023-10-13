@@ -1,0 +1,102 @@
+/*==========Common CSS Start==========*/
+
+:root {
+  --yellow-color: #C29D59;
+  --dark-color: #2B2B2B;
+  --white-light-color: #F6F6F6;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+  --primary-font-family:
+    'Titillium Web';
+  --secondary-font-family:
+    'Cormorant Garamond';
+  --transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--primary-font-family);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--dark-color);
+}
+
+.page_layout {
+  width: 100dvw;
+
+  background-color: var(--dark-color);
+}
+
+.main {
+  --top: 80px;
+
+  margin-top: var(--top);
+  min-height: calc(100dvh - var(--top));
+  width: 100vw;
+  background-color: var(--white-color);
+}
+
+
+
+input,
+input:focus,
+button,
+button:focus {
+  outline: none;
+}
+
+.li-item {
+  color: var(--yellow-color);
+  transition: var(--transition);
+}
+
+.li-item,
+.li-item:hover,
+.li-item:focus,
+.li-item:active {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--secondary-font-family);
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--dark-color);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+p:last-of-type {
+  margin-bottom: 0;
+}

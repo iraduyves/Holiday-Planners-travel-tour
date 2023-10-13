@@ -1,0 +1,15 @@
+.input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    display: flex;
+    gap: .5rem;
+}
+
+.input input,select {
+    width: 100%;
+    border: none;
+    font: inherit;
+}
+
