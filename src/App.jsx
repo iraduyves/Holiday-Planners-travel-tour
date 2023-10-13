@@ -6,6 +6,9 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Footer from './Components/Footer'
+import ConctactUs from './pages/ContactUs'
+import About from './pages/About'
+import Destination from './Components/Destination'
 
 function Layout() {
   return (
@@ -33,7 +36,10 @@ export function App() {
         <Route index element={<Homepage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/contact' element={<ConctactUs/>} />
+        <Route path='/about' element={<About/>} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/destination' element={<Destination/>} />
         <Route path="*" element={<div>NOt Found</div>} />
       </Route>
       <Route />

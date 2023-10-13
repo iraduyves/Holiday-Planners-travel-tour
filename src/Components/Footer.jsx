@@ -5,6 +5,7 @@ import footerback from '/footer-back.jpg'
 import { FaFacebookF} from 'react-icons/fa';
 import { FaInstagram} from 'react-icons/fa';
 import { FaTwitter} from 'react-icons/fa';
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -25,12 +26,12 @@ const Footer = () => {
                                 <form >
                                     <span className="form-control-span email-wrap">
                                         <input type="text" className="form-input" placeholder='Enter your Email' required/>
-                                        <button className="sec-btn sm-btn"><span>Submit</span></button>
+                                        <button className="sec-btn ">Submit</button>
                                     </span>
                                 </form>
                             </div>
                             <div className="payment-campanies-logo">
-                                   <img src={"https://html.geekcodelab.com/holiday-planners/assets/images/payment-companies-logo.png"} alt="payment-companies-logo"/>   
+                                   <img src={"https://html.geekcodelab.com/holiday-planners/assets/images/payment-companies-logo.png"} alt="payment-companies-logo" />   
                             </div>
                         </div>
                         <div className="row-right row-right5">
@@ -40,10 +41,28 @@ const Footer = () => {
                                 </div>
                                 <div className="footer-menu">
                                     <ul>
-                                        <li><span className='a'>Home</span></li>
-                                        <li><span className='a'>Home</span></li>
-                                        <li><span className='a'>Home</span></li>
-                                        <li><span className='a'>Home</span></li>
+                                        <Link to="/">
+                                             <li><span className='a'>Home</span></li>
+                                        </Link>
+                                        <Link to="/about">
+                                             <li><span className='a'>About</span></li>
+                                        </Link>
+                                        <Link to="/">
+                                             <li><span className='a'>Tour</span></li>
+                                        </Link>
+                                        <Link to="/login">
+                                             <li><span className='a'>Login</span></li>
+                                        </Link>
+                                        <Link to="/signup">
+                                             <li><span className='a'>SIgnup</span></li>
+                                        </Link>
+                                        <Link to="/contact">
+                                             <li><span className='a'>Contact Us</span></li>
+                                        </Link>
+                                        <Link to="/destination">
+                                             <li><span className='a'>Destination</span></li>
+                                        </Link>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -53,7 +72,7 @@ const Footer = () => {
                                 <div className="footer-title">
                                     <div className="h3-title">
                                          Need Help
-                                
+                                   </div>
                                 </div>
                                 <div className="footer-contact">
                                     <ul>
@@ -76,7 +95,7 @@ const Footer = () => {
                                           </ul>
                                         </li>
                                     </ul>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -92,3 +111,4 @@ const Footer = () => {
 }
 
 export default Footer
+ggggggggggggggggggggggggggggg

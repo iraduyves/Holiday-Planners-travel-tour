@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import './styles.css'
 import Footer from '../Components/Footer'
 import MainForm from '../Components/MainForm'
+import About from './About'
+import '../Components/navbar/navbar.css'
 
 
 const Homepage = () => {
@@ -76,7 +78,6 @@ const Homepage = () => {
         </div>
       </div>
       <MainForm/>
-
 
     </React.Fragment>
   )

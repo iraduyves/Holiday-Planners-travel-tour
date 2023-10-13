@@ -1,3 +1,160 @@
+p {
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--dark-color);
+
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+.h1-title {
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 90px;
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.h1-title span {
+    background: var(--yellow-color);
+    padding: 5px 10px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.h2-title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    position: relative;
+}
+.about-content-text{
+    opacity: 2;
+}
+
+.h2-title span {
+    font-weight: bold;
+}
+
+.h3-title {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    color: var(--dark-color);
+    position: relative;
+    margin-bottom: 0;
+}
+
+.h4-title {
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--dark-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.h5-title {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.h6-title {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.line-title {
+    padding-left: 10px;
+    border-left: 3px solid var(--yellow-color);
+    margin-bottom: 15px;
+}
+
+.line-title .h4-title {
+    color: var(--yellow-color);
+    margin-bottom: 0;
+    font-family: var(--primary-font-family);
+    font-weight: 400;
+}
+
+.sec-wp {
+    position: relative;
+    z-index: 4;
+}
+
+.sec-title {
+    margin-bottom: 30px;
+}
+
+.sec-btn {
+    width: 170px;
+    height: 50px;
+    background: var(--yellow-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 0;
+    color: var(--white-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.sec-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.sec-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    z-index: -1;
+}
+
+.sec-btn:hover {
+    color: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.sec-btn:hover:before {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
 .main-navigation>input {
     width: 0;
     height: 0;
@@ -984,14 +1141,23 @@ textarea.form-input {
     --basis: 400px;
 }
 
-.top-footer .row {
-    align-items: ;
-}
+
 
 .top-footer .row-left {
-    flex: 1 1 var(--basis);
+    flex: 0 1 var(--basis);
     width: auto;
     height: fit-content;
+}
+
+.footer-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-footer .row-right5 {
@@ -1011,7 +1177,7 @@ textarea.form-input {
 }
 
 .newsletter-form .sec-btn {
-    width: 120px;
+    width: 100%;
     position: relative;
     right: 0;
     top: 0;
@@ -1036,10 +1202,16 @@ textarea.form-input {
     padding: 15px 0;
     border-bottom: 1px solid var(--white-color);
     margin-bottom: 5px;
+    font-size: large;
+    font-weight: 100;
 }
+
 
 .footer-title .h3-title {
     color: var(--white-color);
+    display: flex;
+    justify-content: center;
+
 }
 
 .footer-nav-wp {
@@ -1056,6 +1228,7 @@ textarea.form-input {
 
 .footer-menu ul li {
     margin-bottom: 15px;
+    list-style: none;
 }
 
 .footer-menu ul li:last-child {
@@ -1219,3 +1392,158 @@ textarea.form-input {
 
 
 /*==========Banner Bottom Form CSS End==========*/
+
+/*==========About CSS Start==========*/
+
+.about-image-wp {
+    position: relative;
+    padding-right: 100px;
+    padding-bottom: 40px;
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    
+}
+.main-about.common-sec {
+    padding-top: 80px;
+    opacity: 0.95;
+    position: absolute;
+}
+.about-image-box.big {
+    width: 100%;
+    height: 440px;
+    padding: 7px;
+    border: 3px solid var(--yellow-color);
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+}
+
+.about-image-box.small {
+    width: 270px;
+    height: 200px;
+    padding: 7px;
+    border: 3px solid var(--yellow-color);
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.about-content .sec-btn {
+    margin-top: 20px;
+}
+
+.about-content {
+    padding-right: 26px;
+    padding-top: 30px;
+}
+.colrow6{
+   flex:0 0 50%;
+   max-width: 50%;
+   row-gap: 20rem;
+
+
+}
+
+/*==========About CSS End==========*/
+
+
+
+/*==========Destination CSS Start==========*/
+
+.destination-box {
+    margin-bottom: 40px;
+}
+
+.destination-box a {
+    display: block;
+}
+
+.destination-box:hover .destination-box-image {
+    transform: scale(1.1);
+}
+
+.destination-box:hover .destination-box-content-inner:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+}
+
+.destination-box:hover .destination-box-content .h3-title {
+    color: var(--white-color);
+}
+
+.destination-box .destination-box-image-wp {
+    overflow: hidden;
+}
+
+.destination-box .destination-box-image {
+    width: 100%;
+    height: 370px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.destination-box-content {
+    margin: -27px 30px 0 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.destination-box-content-inner {
+    width: auto;
+    display: inline-block;
+    padding: 7px 15px;
+    background: var(--white-color);
+    border-left: 3px solid var(--yellow-color);
+    box-shadow: var(--box-shadow);
+    min-width: 150px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.destination-box-content-inner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--yellow-color);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    z-index: -1;
+}
+
+.destination-box-content .h3-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.destination-box.big-height .destination-box-image {
+    height: 807px;
+}
+
+.destination-see-more {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/*==========Destination CSS End==========*/

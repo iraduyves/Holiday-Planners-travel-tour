@@ -1,6 +1,7 @@
 import { useMemo } from "react"
 import logowhite from '/logo-icon-white.svg'
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa"
+import {Link} from 'react-router-dom'
 
 export default function MenuBar() {
     const id = useMemo(() => "nav-input-menu", [])
@@ -29,8 +30,12 @@ export default function MenuBar() {
                         <div className="row-left5">
                             <div className="menu-container">
                                 <ul>
-                                    <li className="active"><span className='a'>Home</span></li>
-                                    <li ><span className='a'>About</span></li>
+                                    <Link to="/">
+                                          <li className="active"><span className='a'>Home</span></li>
+                                    </Link>
+                                    <Link  to="/about">
+                                         <li ><span className='a'>About</span></li>
+                                    </Link>
                                     <li className='dropdown-items dropdown-open'>
                                         {/* <FontAwesomeIcon icon={faCircleChevronDown} style={{color: "#c29d59"}} className='faicon' /> */}
                                         <span className='a'>Tour</span>
@@ -39,10 +44,15 @@ export default function MenuBar() {
                                             <li><span className="a">Tour Details</span></li>
                                         </ul>
                                     </li>
-
-                                    <li ><span className='a'>Login</span></li>
-                                    <li ><span className='a'>Signup</span></li>
-                                    <li ><span className='a'>Contact</span></li>
+                                    <Link to="/login">
+                                         <li ><span className='a'>Login</span></li>
+                                    </Link>
+                                    <Link  to="/signup">
+                                         <li ><span className='a'>Signup</span></li>
+                                    </Link>
+                                    <Link  to="/contact">
+                                         <li ><span className='a'>Contact</span></li>
+                                    </Link>
 
                                 </ul>
                             </div>
