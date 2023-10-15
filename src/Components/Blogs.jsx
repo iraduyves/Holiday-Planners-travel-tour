@@ -132,5 +132,4 @@ const Blogs = () => {
         </>
     )
 }
-hhhhhh
-export default Blogs
+hhhhexport default Blogs
