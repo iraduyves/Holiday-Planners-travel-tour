@@ -1,7 +1,11 @@
 import '../Components/navbar/navbar.css'
+import AmazingOffer from './AmazingOffer'
+import Highlight from './Highlight'
+
 
 const Destination = () => {
     return (
+        <>
         <div className="main-destination common-sec" style={{ backgroundImage: 'url("https://html.geekcodelab.com/holiday-planners/assets/images/wave-design.jpg")' }}>
             <div className="sec-wp">
                 <div className="container">
@@ -26,41 +30,58 @@ const Destination = () => {
                     <div className="row">
                         <div className="row-left">
                             <div className="destination-box">
-                                <div className="row">
-                                    <div className="colrow6">
-                                        <div className="destination-box">
-                                            <div className="a">
-                                                <div className="destination-box-image-wp">
-                                                    <div className="destination-box-image back-image" style={{ backgroundImage: 'url("	https://html.geekcodelab.com/holiday-planners/assets/images/destination-img2.jpg")' }}>
 
-                                                    </div>
-                                                </div>
-                                                <div className="destination-box-content">
-                                                    <div className="destiantion-box-content-inner">
-                                                        <h3 className="h3-title">Canada</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+
+                                <div className="a">
+                                    <div className="destination-box-image-wp">
+                                        <div className="destination-box-image back-image" style={{ backgroundImage: 'url("https://html.geekcodelab.com/holiday-planners/assets/images/destination-img1.jpg")' }}>
+
                                         </div>
                                     </div>
-                                    <div className="colrow6">
-                                        <div className="destination-box">
-                                            <div className="a">
-                                                <div className="destination-box-image-wp">
-                                                    <div className="destination-box-image back-image" style={{ backgroundImage: 'url("	https://html.geekcodelab.com/holiday-planners/assets/images/destination-img3.jpg")' }}>
-
-                                                    </div>
-                                                </div>
-                                                <div className="destination-box-content">
-                                                    <div className="destiantion-box-content-inner">
-                                                        <h3 className="h3-title">Switzland</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div className="destination-box-content">
+                                        <div className="destination-box-content-inner">
+                                            <h3 className="h3-title">Canada</h3>
                                         </div>
                                     </div>
+
 
                                 </div>
+                            </div>
+                            <div className="row">
+                                <div className="colrow6">
+                                    <div className="destination-box">
+                                        <div className="a">
+                                            <div className="destination-box-image-wp">
+                                                <div className="destination-box-image back-image" style={{ backgroundImage: 'url("	https://html.geekcodelab.com/holiday-planners/assets/images/destination-img2.jpg")' }}>
+
+                                                </div>
+                                            </div>
+                                            <div className="destination-box-content">
+                                                <div className="destination-box-content-inner">
+                                                    <h3 className="h3-title">Canada</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="colrow6">
+                                    <div className="destination-box">
+                                        <div className="a">
+                                            <div className="destination-box-image-wp">
+                                                <div className="destination-box-image back-image" style={{ backgroundImage: 'url("	https://html.geekcodelab.com/holiday-planners/assets/images/destination-img3.jpg")' }}>
+
+                                                </div>
+                                            </div>
+                                            <div className="destination-box-content">
+                                                <div className="destination-box-content-inner">
+                                                    <h3 className="h3-title">Switzland</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div className="row-right">
@@ -93,6 +114,9 @@ const Destination = () => {
             </div>
 
         </div>
+        <AmazingOffer/>
+        <Highlight/>
+        </>
     )
 }
 

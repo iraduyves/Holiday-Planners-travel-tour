@@ -1,7 +1,9 @@
 import logowhite from '/logo-icon-white.svg'
 import  '../Components/navbar/navbar.css'
+import Destination from '../Components/Destination'
 const About = () => {
   return (
+    <>
     <div className="main-about common-sec">
         <div className="logo-icon">
             <img src={logowhite} alt="white logo" />
@@ -57,6 +59,8 @@ const About = () => {
             </div>
         </div>
     </div>
+    <Destination/>
+    </>
   )
 }
 

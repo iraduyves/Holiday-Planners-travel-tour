@@ -2,8 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Input from '../Components/input'
 import './navbar/navbar.css'
 import { faCalendar, faCaretDown, faEnvelope, faFlag, faLocationDot, faLock } from '@fortawesome/free-solid-svg-icons'
+import About from '../pages/About'
 const MainForm = () => {
   return (
+    <>
     <div className="main-banner-bottom-from">
         <div className="sec-wp">
             <div className="container">
@@ -27,6 +29,8 @@ const MainForm = () => {
             </div>
         </div>
     </div>
+    <About/>
+    </>
    )
 }
 

@@ -1,3 +1,109 @@
+
+.slick-slide {
+    outline: none !important;
+}
+
+.slick-slide:focus {
+    outline: none !important;
+}
+
+.slick-dots li button:before,
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before,
+.slick-dots li.slick-active button:before {
+    display: none;
+}
+
+.slick-dots li {
+    list-style: none;
+    width: auto;
+    height: auto;
+    margin: 0;
+    margin-right: 15px;
+}
+
+.slick-dots li:last-child {
+    margin-right: 0;
+}
+
+.slick-dots li button {
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid var(--yellow-color);
+    transition: var(--transition);
+}
+
+.slick-dots li button:hover,
+.slick-dots li.slick-active button {
+    background: var(--yellow-color);
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 70px;
+    height: 40px;
+    background: var(--yellow-color);
+    border: none;
+    outline: none;
+    border-radius: 0;
+    box-shadow: var(--box-shadow);
+    font-size: 18px;
+    font-family: var(--primary-font-family);
+    letter-spacing: 2px;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    z-index: 5;
+}
+
+.slick-arrow.prev-arrow {
+    margin-left: 2rem;
+
+    /* left: 0; */
+}
+
+.slick-arrow.next-arrow {
+    right: 0;
+}
+
+.slick-arrow span {
+    position: relative;
+    z-index: 2;
+}
+
+.slick-arrow:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+    -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1), -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+    z-index: 1;
+}
+
+.slick-arrow:hover:before {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+
+
+
 p {
     font-size: 16px;
     line-height: 24px;
@@ -213,6 +319,14 @@ p:last-of-type {
 .row-left12{
     flex: 0 0 10%;
     max-width:100%;
+}
+.rowleft12{
+    flex: 0 0 100%;
+    max-width:100%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .site-header {
@@ -1446,7 +1560,7 @@ textarea.form-input {
 .colrow6{
    flex:0 0 50%;
    max-width: 50%;
-   row-gap: 20rem;
+   /* row-gap: 20rem; */
 
 
 }
@@ -1456,6 +1570,24 @@ textarea.form-input {
 
 
 /*==========Destination CSS Start==========*/
+
+.row-left .row{
+    margin-left: -3px;
+    gap: 35px;
+}
+.row-left .row .colrow6 {
+    flex: 0 47%;
+    max-width: 49%;
+}
+.main-destination .sec-wp .container{
+    margin-left: 3rem;
+}
+.main-destination .sec-wp .container .row .row-left{
+    max-width: 60%;
+ }
+.main-destination .sec-wp .container .row .row-left12{
+    margin-left: 25rem;
+ }
 
 .destination-box {
     margin-bottom: 40px;
@@ -1547,3 +1679,668 @@ textarea.form-input {
 
 
 /*==========Destination CSS End==========*/
+
+/*==========Tour Offer CSS Start==========*/
+.swiper-slide{
+    width: 800px;
+}
+.row-right .slick-slide .slick-cloned{
+    width: 100%;
+}
+
+.tour-offer-box .a {
+    display: block;
+}
+.main-tour p{
+    color: var(--dark-color);
+}
+
+.tour-offer-box .tour-offer-box-image-wp {
+    padding-right: 30px;
+}
+
+.tour-offer-box .tour-offer-box-image {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+.discount-label {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: rotate(270deg) translateX(-100%);
+    transform-origin: 0 0;
+    background-color: var(--yellow-color);
+    color: var(--white-color);
+    padding: 5px 10px;
+    font-size: 15px;
+    line-height: 25px;
+    box-sizing: border-box;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.tour-offer-box:hover .discount-label,
+.tour-box:hover .discount-label {
+    padding: 5px 20px;
+}
+
+.tour-offer-box-content {
+    background: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    border-left: 3px solid var(--yellow-color);
+    box-shadow: var(--box-shadow);
+    margin-left: 30px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+}
+
+.tour-offer-box-content .h4-title {
+    margin-bottom: 0;
+    margin: 15px 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tour-offer-box-content .price-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--yellow-color);
+    color: var(--white-color);
+    padding: 18px 9px;
+    font-size: 20px;
+    font-family: var(--secondary-font-family);
+    transition: var(--transition);
+    min-width: 60px;
+}
+
+.tour-offer-box .a:hover .price-label {
+    background: var(--dark-color);
+}
+
+.tour-offer-top {
+    padding-bottom: 216px;
+}
+
+.tour-offer-slider-wp {
+    margin-top: -226px;
+}
+
+.tour-offer-slider .slick-list {
+    width: calc(100% + 400px);
+    padding-right: 400px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tour-offer-slider .slick-dots {
+    text-align: left;
+    padding-left: 15px;
+    bottom: -45px;
+}
+
+.tour-offer-slider.slick-slider {
+    margin-bottom: 45px;
+}
+
+.tour-offer-slider .slick-arrow {
+    left: -85px;
+}
+
+.tour-offer-slider .slick-arrow.prev-arrow {
+    top: calc(50% - 30px);
+}
+
+.tour-offer-slider .slick-arrow.next-arrow {
+    top: calc(50% + 30px);
+    right: auto;
+}
+
+
+/*==========Tour Offer CSS End==========*/
+
+/*==========Highlight CSS Start==========*/
+
+.main-highlight {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.main-highlight:after {
+    content: '';
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    right: 45px;
+    bottom: 45px;
+    border: 5px solid var(--yellow-color);
+    z-index: 2;
+}
+
+.highlight-bg-video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.highlight-bg-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.main-highlight .sec-title {
+    /* text-align: center; */
+    margin-left:20rem ;
+    width: 100%;
+}
+
+.main-highlight .sec-title .h2-title {
+    color: var(--white-color);
+    font-size: 30px;
+    line-height: 60px;
+    font-weight: 600;
+}
+
+.main-highlight .sec-title .h3-title {
+    color: var(--yellow-color);
+    font-size:1.9rem;    font-family: var(--primary-font-family);
+}
+
+
+/*==========Highlight CSS End==========*/
+
+
+/*--- Tour services Start ---*/
+
+.tour-services-row {
+    width: 100%;
+    padding: 40px 50px;
+    background: var(--yellow-color);
+    position: relative;
+    z-index: 2;
+}
+.slick-list .slick-cloned{
+    width: 380px;
+}
+
+.tour-services-row:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: -1;
+}
+
+.tour-service-box {
+    display: flex;
+    align-items: flex-start;
+}
+
+.tour-service-box .tour-service-icon {
+    width: 50px;
+    flex: 0 0 50px;
+    margin-right: 15px;
+}
+
+.tour-service-content .h4-title {
+    font-family: var(--primary-font-family);
+    color: var(--white-color);
+}
+
+.tour-service-content p {
+    margin-bottom: 0;
+    color: var(--white-color);
+}
+
+.tour-services {
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/*--- Tour services End ---*/
+
+.tour-box {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.tour-box .tour-box-image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+.tour-box-content {
+    border-left: 3px solid var(--yellow-color);
+    padding: 30px 20px 15px 20px;
+    position: relative;
+}
+
+.tour-box-label .h4-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
+    color: var(--white-color);
+    text-transform: uppercase;
+}
+
+.tour-box-label {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    right: 20px;
+}
+
+.tour-box-inner-label {
+    background: var(--yellow-color);
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+.tour-box-title .h4-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.tour-box-description {
+    margin-bottom: 15px;
+}
+
+.tour-box-description p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0.6;
+}
+
+.tour-info-box {
+    padding: 15px 0;
+    border-top: 1px solid rgb(43 43 43 / 0.1);
+    border-bottom: 1px solid rgb(43 43 43 / 0.1);
+}
+
+.tour-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.tour-info-icon i {
+    font-size: 25px;
+    color: var(--yellow-color);
+}
+
+.tour-info-icon {
+    margin-right: 10px;
+}
+
+.tour-info-content {
+    flex: 1;
+}
+
+.tour-info-content .h6-title {
+    margin-bottom: 0;
+}
+
+.tour-info-content p {
+    font-size: 12px;
+    line-height: 14px;
+    opacity: 0.6;
+}
+
+.tour-box-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.book-now-button .sec-btn {
+    width: 120px;
+}
+
+.tour-slider .slick-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tour-slider.slick-slider {
+    margin-bottom: 0;
+}
+
+.tour-slider .slick-arrow {
+    top: -115px;
+    right: 15px;
+    left: auto;
+    transform: unset;
+}
+
+.tour-slider .next-arrow.slick-arrow {
+    top: -60px;
+}
+
+.tour-sec {
+    padding-bottom: 227px;
+}
+
+.tour-slider .slick-dots {
+    bottom: -45px;
+}
+
+
+/*==========Tour CSS End==========*/
+
+
+/*==========Testimonial CSS Start==========*/
+
+.testimonial-left-side {
+    position: relative;
+    margin-top: -130px;
+    z-index: 2;
+}
+
+.testimonial-left-side:before {
+    content: '';
+    position: absolute;
+    background: var(--yellow-color);
+    width: 500%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+.colrow5{
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.testimonial-left-side .sec-title .line-title {
+    border-color: var(--white-color);
+}
+
+.testimonial-left-side .sec-title .line-title .h4-title {
+    color: var(--white-color);
+}
+
+.testimonial-left-side .sec-title .h2-title {
+    color: var(--white-color);
+}
+
+.testimonial-quote {
+    background: var(--white-color);
+    text-align: right;
+    padding: 112px 0 0 0;
+}
+
+.testimonial-quote img {
+    width: 295px;
+}
+
+.testimonial-right-side {
+    padding: 70px 0 0 0;
+}
+
+.testimonial-slide .overflow-text {
+    max-height: unset;
+    height: 178px;
+}
+
+.testimonial-slide .overflow-text p {
+    color: var(--dark-color);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.testimonial-stars {
+    font-size: 0;
+    margin-bottom: 18px;
+}
+
+.testimonial-stars .i {
+    color: var(--yellow-color);
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.testimonial-stars .i:last-child {
+    margin-right: 0;
+}
+
+.testimonial-name {
+    margin-top: 18px;
+}
+
+.testimonial-name .h3-title {
+    color: var(--yellow-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.testimonial-name .rated {
+    color: var(--dark-color);
+    opacity: 0.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 300;
+}
+
+.testimonial-slider.slick-slider {
+    margin-bottom: 35px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.testimonial-slide {
+    padding: 0 15px;
+}
+
+.testimonial-slider .slick-dots {
+    text-align: left;
+    bottom: -35px;
+    padding-left: 15px;
+}
+.offset-lg-1{
+    margin-left: 8.3333%;
+}
+
+
+/*==========Testimonial CSS End==========*/
+
+/*==========Blog CSS Start==========*/
+
+.main-blog .sec-title,
+.main-blog .sec-title .h2-title {
+    margin-bottom: 0;
+}
+.main-blog .row-right{
+    max-width: 100%;
+}
+
+.blog-learn-btn {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.blog-learn-btn.for-des {
+    display: flex !important;
+}
+
+.blog-learn-btn.for-mob {
+    display: none !important;
+}
+
+.blog-box {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-image {
+    width: 100%;
+    height: 400px;
+    transition: var(--transition);
+}
+
+.blog-box:hover .blog-image {
+    transform: scale(1.2);
+}
+
+.blog-box-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.blog-box:hover .blog-box-content {
+    padding-bottom: 40px;
+}
+
+.blog-box-content * {
+    color: var(--white-color);
+}
+
+.blog-box-content .h3-title {
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.blog-box-content .h3-title a {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-box-content .date {
+    font-weight: 300;
+}
+
+.blog-box-content a:hover {
+    color: var(--yellow-color);
+}
+
+.blog-box-content p {
+    margin-bottom: 0;
+}
+
+
+/*==========Blog CSS End==========*/
+
+/*==========Instagram CSS Start==========*/
+
+.main-instagram .sec-title .h2-title a {
+    color: var(--dark-color);
+}
+.colrow2{
+    max-width: 16.666667%;
+}
+
+.main-instagram .sec-title .h2-title a:hover {
+    color: var(--yellow-color);
+}
+
+.instagram-icon {
+    position: absolute;
+    font-size: 200px;
+    line-height: 1;
+    top: 50%;
+    left: 4%;
+    transform: translate(0, -50%);
+    color: var(--yellow-color);
+    opacity: 0.3;
+}
+
+.instagram-slide-box {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+}
+
+.instagram-slide-box .instagram-slide-image {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.instagram-slide-box:hover .instagram-slide-image {
+    transform: scale(1.2) rotate(2deg);
+}
+
+
+/*==========Instagram CSS End==========*/
+
+
+/*==========Partners CSS Start==========*/
+
+.partners-logo-box {
+    position: relative;
+    background: var(--white-color);
+    border-left: 3px solid var(--yellow-color);
+    border-right: 3px solid var(--yellow-color);
+    width: 100%;
+    height: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+}
+
+.partners-logo-box img {
+    filter: grayscale(1);
+    transition: var(--transition);
+}
+
+.partners-logo-box:hover img {
+    filter: grayscale(0);
+}
+
+.partners-slider .slick-list {
+    padding: 10px 0;
+}
+.partners .colrow3{
+    max-width: 25%;
+}
+
+
+/*==========Partners CSS End==========*/

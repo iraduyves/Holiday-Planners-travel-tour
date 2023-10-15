@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import logo from '/logo.png'
 import logowhite from '/logo-icon-white.svg'
 import '../navbar/navbar.css'
-import {  faCircleXmark, faEnvelope, faMagnifyingGlass, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faCircleChevronDown, faCircleXmark, faEnvelope, faMagnifyingGlass, faPhone } from '@fortawesome/free-solid-svg-icons'
 
 import { FaFacebookF } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';

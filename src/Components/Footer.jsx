@@ -1,7 +1,4 @@
-import React from 'react'
-import logowhite  from '/logo-icon-white.svg'
 import './navbar/navbar.css'
-import footerback from '/footer-back.jpg'
 import { FaFacebookF} from 'react-icons/fa';
 import { FaInstagram} from 'react-icons/fa';
 import { FaTwitter} from 'react-icons/fa';
@@ -61,6 +58,15 @@ const Footer = () => {
                                         </Link>
                                         <Link to="/destination">
                                              <li><span className='a'>Destination</span></li>
+                                        </Link>
+                                        <Link to="/amazingtour">
+                                             <li><span className='a'>AmazingTour</span></li>
+                                        </Link>
+                                        <Link to="/highlight">
+                                             <li><span className='a'>Highlight</span></li>
+                                        </Link>
+                                        <Link to="/testimonial">
+                                             <li><span className='a'>Testimonials</span></li>
                                         </Link>
                                        
                                     </ul>
