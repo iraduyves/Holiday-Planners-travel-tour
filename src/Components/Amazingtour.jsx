@@ -1069,7 +1069,7 @@ const Amazingtour = () => {
                     </div>
                 </div>
                 <Testimonial />
-                <Instagram/>
+                {/* <Instagram/> */}
 
             </>
 

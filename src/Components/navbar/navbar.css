@@ -195,6 +195,9 @@ p:last-of-type {
     font-family: var(--primary-font-family);
     font-weight: 400;
 }
+li{
+    list-style: none;
+}
 
 .sec-wp {
     position: relative;
@@ -275,11 +278,7 @@ p:last-of-type {
         opacity: 0;
     } */
 
-    &~.menu-bar #close-btn {
-        translate: 0;
-        max-width: 10rem;
-        opacity: 1;
-    }
+    
 
     &~.full-menu {
         left: 0;
@@ -314,6 +313,7 @@ p:last-of-type {
         transform: translate(-50%, -50%) rotate(-45deg);
         left: 50%;
         width: 25px;
+
     }
 }
 .row-left12{
@@ -1468,44 +1468,7 @@ textarea.form-input {
     color: var(--yellow-color);
 }
 
-/*==========Banner Bottom Form CSS Start==========*/
-
-.banner-form {
-    background: var(--white-color);
-    box-shadow: var(--box-shadow);
-    padding: 25px 30px;
-    position: relative;
-    margin-top: -65px;
-    border-left: 3px solid var(--yellow-color);
-    border-right: 3px solid var(--yellow-color);
-    margin-left: 11rem;
-}
-
-.banner-form form {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
-}
-
-.banner-form form .input-col {
-    max-width: 27.545%;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 100%;
-    flex: 0 0 27.545%;
-}
-
-.banner-form form .input-col.button-col {
-    max-width: 17.365%;
-    flex: 0 0 17.365%;
-}
-
-.banner-form form .input-col.button-col .sec-btn {
-    width: 100%;
-}
-
-
-/*==========Banner Bottom Form CSS End==========*/
+ 
 
 /*==========About CSS Start==========*/
 
@@ -1564,6 +1527,139 @@ textarea.form-input {
 
 
 }
+.colrow12{
+   flex:0 0 100%;
+   max-width: 100%;
+   /* row-gap: 20rem; */
+
+
+}
+
+/*==========Banner CSS Start==========*/
+
+.banner-slider .slick-slide .banner-content .h1-title {
+    position: relative;
+    top: -50px;
+    opacity: 0;
+    transition: 1s;
+}
+
+.banner-slider .slick-slide.slick-current .banner-content .h1-title {
+    position: relative;
+    top: 0;
+    opacity: 1;
+    transition: 1s;
+    transition-delay: 1s;
+}
+
+.banner-slider .slick-slide .banner-content p {
+    position: relative;
+    top: 50px;
+    opacity: 0;
+    transition: 1s;
+}
+
+.banner-slider .slick-slide.slick-current .banner-content p {
+    position: relative;
+    top: 0;
+    opacity: 1;
+    transition: 1s;
+    transition-delay: 1.3s;
+}
+
+.banner-slide-box {
+    width: 100%;
+    position: relative;
+    padding: 348px 0 289px 0;
+    overflow: hidden;
+}
+
+.banner-content {
+    text-align: center;
+}
+
+.banner-content p {
+    color: var(--white-color);
+    width: 77%;
+    margin: auto;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.banner-slider.slick-slider {
+    margin-bottom: 0;
+}
+
+.banner-slider.slick-slider .slick-track {
+    display: flex;
+}
+
+.banner-slider.slick-slider .slick-slide {
+    height: auto;
+}
+
+.banner-slider.slick-slider .slick-dots {
+    bottom: 0;
+    right: 0;
+    width: auto;
+    background: var(--white-color);
+    padding: 44px 40px;
+    border-radius: 50px 0 0 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.banner-slider.slick-slider .slick-arrow.prev-arrow {
+    left: 0;
+    transform: translate(-15px, -50%) rotate(-90deg);
+}
+
+.banner-slider.slick-slider .slick-arrow.next-arrow {
+    right: 0;
+    transform: translate(15px, -50%) rotate(90deg);
+}
+
+
+/*==========Banner CSS End==========*/
+
+
+/*==========Banner Bottom Form CSS Start==========*/
+
+.banner-form {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    padding: 25px 30px;
+    position: relative;
+    margin-top: -50px;
+    border-left: 3px solid var(--yellow-color);
+    border-right: 3px solid var(--yellow-color);
+}
+
+.banner-form form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.banner-form form .input-col {
+    max-width: 27.545%;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    flex: 0 0 27.545%;
+}
+
+.banner-form form .input-col.button-col {
+    max-width: 17.365%;
+    flex: 0 0 17.365%;
+}
+
+.banner-form form .input-col.button-col .sec-btn {
+    width: 100%;
+}
+
+
+/*==========Banner Bottom Form CSS End==========*/
 
 /*==========About CSS End==========*/
 
@@ -1573,7 +1669,7 @@ textarea.form-input {
 
 .row-left .row{
     margin-left: -3px;
-    gap: 35px;
+    gap: 30px;
 }
 .row-left .row .colrow6 {
     flex: 0 47%;
@@ -1989,7 +2085,7 @@ textarea.form-input {
     align-items: flex-start;
 }
 
-.tour-info-icon i {
+.tour-info-icon .i {
     font-size: 25px;
     color: var(--yellow-color);
 }
@@ -2344,3 +2440,850 @@ textarea.form-input {
 
 
 /*==========Partners CSS End==========*/
+.inner-banner {
+    padding: 380px 0 230px 0;
+}
+
+.inner-banner .h1-title {
+    margin: 0;
+}
+
+/*============(Page)Tour CSS Start============*/
+.no-gutters {
+    gap: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.tour-filter .form-input.filter-label {
+    text-align: center;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+.tour-filter .form-input {
+    border-color: rgb(43 43 43 / 0.5);
+    padding: 10px 45px 10px 16px;
+}
+
+.tour-filter .release-wrap .form-input {
+    border-right: none;
+    border-radius: 0;
+}
+
+.tour-filter .order-wrap .form-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.tour-filter .form-control-span .arrow {
+    right: 16px;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.tour-filter-result .tour-box {
+    gap: 2;
+    margin-bottom: 30px;
+}
+
+.why-book-with-us {
+    background: var(--white-light-color);
+}
+
+.why-book-with-us .book-with-list li {
+    position: relative;
+    color: rgb(43 43 43 / 0.6);
+    margin-bottom: 5px;
+}
+
+.why-book-with-us .book-with-list li:last-child {
+    margin-bottom: 0;
+}
+
+.why-book-with-us .book-with-list li .i {
+    display: none;
+    position: relative;
+    margin-right: 5px;
+    color: var(--black-color);
+   
+}
+
+.get-a-questions:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--yellow-color);
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.get-a-questions * {
+    position: relative;
+    z-index: 2;
+}
+
+.get-a-questions .line-title {
+    border-color: var(--dark-color);
+}
+
+.get-a-questions .line-title .h4-title {
+    color: var(--white-color);
+}
+
+.get-a-questions p {
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.gaq-list-item li i {
+    color: var(--dark-color);
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.gaq-list-item li a {
+    color: var(--white-color);
+}
+
+.gaq-list-item li {
+    margin-bottom: 20px;
+}
+
+.gaq-list-item li:last-child {
+    margin-bottom: 0;
+}
+
+/*============(Page)Destination Detail CSS Start============*/
+
+.left-side-box {
+    padding: 30px;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+}
+
+.left-side {
+    padding-top: 30px;
+}
+
+.destination-gallery-box {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+
+.destination-gallery-box .destination-gallery-image {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.destination-gallery-box .destination-gallery-image:hover {
+    transform: scale(1.2) rotate(2deg);
+}
+
+.destination-gallery-box.big {
+    height: 230px;
+}
+
+blockquote {
+    margin: 15px 0;
+    background: var(--white-light-color);
+    padding: 10px 12px 10px 30px;
+    border-left: 3px solid var(--yellow-color);
+    font-weight: 600;
+    font-style: italic;
+}
+
+blockquote p {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.widget {
+    position: relative;
+    padding: 40px;
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 40px;
+}
+
+.widget:last-child {
+    margin-bottom: 0;
+}
+
+.widget .line-title {
+    margin-bottom: 20px;
+}
+
+.search-form .sec-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 20px;
+}
+
+.search-form .form-input {
+    padding: 15px 70px 15px 20px;
+}
+
+.right-side {
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+}
+
+.widget .line-title .h4-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--dark-color);
+}
+
+.about-author {
+    text-align: center;
+}
+
+.about-author .about-author-image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+}
+
+.about-author .h5-title {
+    text-transform: uppercase;
+    font-family: var(--primary-font-family);
+}
+
+.author-social {
+    margin-top: 20px;
+}
+
+.author-social li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.author-social li a {
+    font-size: 17px;
+}
+
+.author-social li a:hover {
+    color: var(--dark-color);
+}
+
+.categories-list li {
+    margin-bottom: 10px;
+}
+
+.categories-list li:last-child {
+    margin-bottom: 0;
+}
+
+.categories-list li a {
+    width: 100%;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.categories-list li a .h4-title {
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--primary-font-family);
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 26px;
+}
+
+.categories-list li a .price-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--yellow-color);
+    color: var(--white-color);
+    padding: 11px 9px;
+    font-weight: bold;
+    transition: var(--transition);
+    min-width: 46px;
+}
+
+.categories-list li a:hover .price-label {
+    background: var(--dark-color);
+}
+
+.tour-listing li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tour-listing li:last-child {
+    margin-bottom: 0;
+}
+
+.tour-listing li .tour-list-image {
+    width: 80px;
+    height: 80px;
+    box-shadow: var(--box-shadow);
+    flex: 0 0 80px;
+    margin-right: 15px;
+}
+
+.tour-list-content {
+    flex: 1;
+}
+
+.tour-list-content * {
+    margin-bottom: 0;
+}
+
+.tour-list-content .h5-title {
+    font-family: var(--primary-font-family);
+    text-transform: uppercase;
+}
+
+.tour-list-content .h5-title a {
+    color: var(--dark-color);
+}
+
+.tour-list-content .h5-title a:hover {
+    color: var(--yellow-color);
+}
+
+.tour-list-content .h4-title {
+    margin-top: -5px;
+}
+
+.tour-list-content .tour-duration {
+    display: flex;
+    align-items: center;
+}
+
+.tour-list-content .tour-duration i {
+    margin-right: 7px;
+    color: var(--yellow-color);
+}
+
+.tour-list-content .tour-duration p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tag-listing li {
+    display: inline-block;
+    margin: 0 12px 15px 0;
+}
+
+.tag-listing li a {
+    display: inline-block;
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+    border-radius: 5px;
+    padding: 6px 10px;
+}
+
+.tag-listing li a:hover {
+    background: var(--yellow-color);
+    color: var(--white-color);
+    border-color: var(--yellow-color);
+}
+
+
+/*============(Page)Destination Detail CSS End============*/
+
+
+.find-tour-form .form-control-span {
+    margin-bottom: 20px;
+}
+
+.no-icon .form-input {
+    padding-left: 15px;
+}
+
+.no-arrow .form-input {
+    padding-right: 15px;
+}
+
+.checkbox-item {
+    padding-left: 40px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.checkbox-item input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    cursor: pointer;
+    transition: var(--transition);
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.find-now-btn.sec-btn {
+    width: 18rem;
+    margin-top: 1rem;
+}
+.find-tour-form select.form-input {
+    width: 17.6rem;
+}
+
+
+/*==========Pagination CSS Start==========*/
+
+.pagination {
+    margin: 0;
+    flex-wrap: wrap;
+    border-radius: 0;
+    margin-top: 10px;
+}
+
+.pagination li {
+    margin-right: 10px;
+}
+
+.pagination li:last-child {
+    margin-right: 0;
+}
+
+.pagination li .page-link {
+    font-size: 20px;
+    font-weight: 700;
+    background: var(--white-light-color);
+    color: var(--dark-color);
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 5px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.pagination li .page-link:hover {
+    background: var(--yellow-color);
+    color: var(--white-color);
+}
+
+.pagination li .page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: none;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--yellow-color);
+    border-color: var(--yellow-color);
+}
+
+
+/*==========Pagination CSS End==========*/
+
+/*============(Page)Tour Detail CSS Start============*/
+
+.tour-detail-tabbing .nav {
+    margin-bottom: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: none;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item {
+    margin: 0;
+    flex: 1;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link {
+    text-align: center;
+    border-color: rgb(43 43 43 / 0.5) !important;
+    border-radius: 0 !important;
+    border-right-color: transparent !important;
+    color: var(--dark-color);
+    padding: 12px 10px;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item:last-child .nav-link {
+    border-right-color: rgb(43 43 43 / 0.5) !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item:first-child .nav-link {
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link i {
+    color: var(--yellow-color);
+    margin-right: 7px;
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link.active,
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link:hover {
+    background-color: var(--yellow-color);
+    border-color: var(--yellow-color) !important;
+    color: var(--white-color);
+}
+
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link.active i,
+.tour-detail-tabbing .nav-tabs li.nav-item .nav-link:hover i {
+    color: var(--dark-color);
+}
+
+.tour-detail-tabbing .tab-content .tab-pane {
+    padding: 40px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+.information-tab-box .discount-label {
+    right: 0;
+    left: auto;
+    transform: unset;
+    background-color: var(--dark-color);
+    font-family: var(--secondary-font-family);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: bold;
+    border-bottom-left-radius: 20px;
+}
+
+.tour-title .h2-title {
+    margin-bottom: 0;
+}
+
+.tour-price-wp {
+    text-align: right;
+}
+
+.tour-price-wp .tour-price {
+    width: 85px;
+    height: 85px;
+    background-color: var(--yellow-color);
+    border-radius: 50%;
+    margin-left: auto;
+    text-align: center;
+}
+
+.tour-price-wp .tour-price .h3-title {
+    font-size: 25px;
+    line-height: 35px;
+    color: var(--white-color);
+    height: 50%;
+    border-bottom: 1px solid var(--white-color);
+    padding-top: 5px;
+}
+
+.tour-price-wp .tour-price p {
+    height: 50%;
+    font-size: 10px;
+    line-height: 20px;
+    color: var(--white-color);
+    padding-top: 5px;
+}
+
+.tour-short-info-box {
+    background-color: var(--yellow-color);
+    margin: 40px 0;
+}
+
+.tour-short-info-box ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 70px;
+}
+
+.tour-short-info-box ul li .text {
+    display: block;
+    color: var(--dark-color);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+.tour-short-info-box ul li i {
+    color: var(--white-color);
+    font-size: 25px;
+}
+
+.tour-short-info-box ul li {
+    text-align: center;
+}
+
+.tour-timetable-schedule>ul>li {
+    display: inline-table;
+    width: 100%;
+}
+
+.tour-timetable-schedule ul li .tts-label {
+    border-top: 1px solid rgb(43 43 43 / .1);
+    border-right: 1px solid rgb(43 43 43 / .1);
+    padding: 17px 30px;
+    width: 50%;
+    display: table-cell;
+}
+
+.tour-timetable-schedule ul li .tts-label .h4-title {
+    margin-bottom: 0;
+}
+
+.tour-timetable-schedule ul li .tts-description {
+    padding: 17px 30px;
+    width: 50%;
+    display: table-cell;
+    border-top: 1px solid rgb(43 43 43 / .1);
+    vertical-align: middle;
+    color: var(--dark-color);
+}
+
+.tour-timetable-schedule ul li:last-child .tts-label,
+.tour-timetable-schedule ul li:last-child .tts-description {
+    border-bottom: 1px solid rgb(43 43 43 / .1);
+}
+
+.tour-timetable-schedule ul li .tts-description a {
+    color: var(--dark-color);
+}
+
+.tour-timetable-schedule ul li .tts-description a:hover {
+    color: var(--yellow-color);
+}
+
+.tour-video {
+    width: 100%;
+    position: relative;
+}
+
+.tour-video video {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+}
+
+.tour-location iframe {
+    width: 100%;
+}
+
+.tts-description ul li {
+    position: relative;
+    padding-left: 25px;
+}
+
+.tts-description ul li i {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    color: var(--yellow-color);
+    font-size: 16px;
+}
+
+.tts-description ul.not-included li i {
+    color: var(--dark-color);
+}
+
+.tour-gallery-slider .tour-gallery-slide-image {
+    width: 100%;
+    height: 230px;
+    cursor: pointer;
+}
+
+.tour-gallery-slider.slick-slider .slick-arrow.prev-arrow {
+    left: 30px;
+    transform: translate(-15px, -50%) rotate(-90deg);
+}
+
+.tour-gallery-slider.slick-slider .slick-arrow.next-arrow {
+    right: 30px;
+    transform: translate(15px, -50%) rotate(90deg);
+}
+
+.tour-timeline-box {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding: 30px 0;
+    border-bottom: 1px solid rgb(43 43 43 / .1);
+    overflow: hidden;
+}
+
+.tour-timeline-box:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(0, -50%);
+    width: 1px;
+    height: 110%;
+    background: rgb(43 43 43 / .1);
+    z-index: -1;
+}
+
+.tour-timeline-box:first-child {
+    padding-top: 0;
+}
+
+.tour-timeline-box:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.tour-timeline-box .tt-box-number {
+    width: 40px;
+    height: 40px;
+    background: var(--yellow-color);
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--white-color);
+    border-radius: 5px;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.tour-timeline-box .h3-title {
+    margin-bottom: 15px;
+}
+
+.tour-timeline-box .h3-title span {
+    font-weight: normal;
+}
+
+.memories-gallery .memories-gallery-image {
+    width: 100%;
+    height: 300px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.rb-avarage-rating .h2-title {
+    margin-bottom: 0;
+    font-family: var(--primary-font-family);
+}
+
+.rb-left-side {
+    width: 150px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.review-breakdown {
+    display: inline-table;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.rb-avarage-verbal-desc i {
+    color: var(--yellow-color);
+}
+
+.rb-right-side {
+    padding-left: 20px;
+}
+
+.rb-comment-list ul li {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(43 43 43 / 0.1);
+}
+
+.rb-comment-list ul li .rb-comment-image {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    flex: 0 0 80px;
+    margin-right: 30px;
+}
+
+.rb-comment-list ul li .rb-comment-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.rb-comment-list ul li .rb-comment-content {
+    flex: 1;
+}
+
+.rb-comment-top-text {
+    margin-bottom: 10px;
+}
+
+.rb-comment-top-text p.date {
+    color: var(--yellow-color);
+}
+
+.rb-comment-top-text .h5-title {
+    margin-bottom: 0;
+}
+
+.rb-rating {
+    margin: 20px 0;
+}
+
+.rb-rating-label {
+    vertical-align: middle;
+}
+
+.rb-rating-value i {
+    color: var(--yellow-color);
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.rb-rating-inner {
+    margin: 2px 0;
+}
+
+.rb-comment-form {
+    padding-top: 30px;
+}
+
+.rb-comment-form .form-control-span {
+    margin-bottom: 30px;
+}
+
+.rb-comment-form .form-input {
+    padding: 10px 20px;
+}
+
+
+/*============(Page)Tour Detail CSS End============*/

@@ -6,6 +6,23 @@ import {Link} from 'react-router-dom'
 export default function MenuBar() {
     const id = useMemo(() => "nav-input-menu", [])
 
+    let links  = [
+        {
+            label :"/",
+            name:"Home"
+        },
+        {
+            label :"/",
+            name:"tour"
+        },       {
+            label :"contact",
+            name:"contact"
+        },       {
+            label :"login",
+            name:"Login"
+        },
+    ]
+
     return (
         <>
             <input type="checkbox" id={id} className="nav-input" />
@@ -30,17 +47,24 @@ export default function MenuBar() {
                         <div className="row-left5">
                             <div className="menu-container">
                                 <ul>
-                                    <Link to="/">
-                                          <li className="active"><span className='a'>Home</span></li>
-                                    </Link>
-                                    <Link  to="/about">
+
+                                    {
+                                        links.map((item ,index)=> {
+                                            return      <Link key={index} to={`/${item.label}`}>
+                                            <li ><span className='a'>{item.name}</span></li>
+  
+                                      </Link>
+                                        })
+                                    }
+                                
+                                    {/* <Link  to="/about">
                                          <li ><span className='a'>About</span></li>
-                                    </Link>
-                                    <li className='dropdown-items dropdown-open'>
-                                        {/* <FontAwesomeIcon icon={faCircleChevronDown} style={{color: "#c29d59"}} className='faicon' /> */}
+                                    </Link> */}
+                                    
+                                    {/* <li className='dropdown-items dropdown-open'>
                                         <span className='a'>Tour</span>
                                         <ul className='sub-menu'>
-                                            <li><span className="a">Tour</span></li>
+                                        <Link to="/tour"> <li><span className="a">Tour</span></li></Link>
                                             <li><span className="a">Tour Details</span></li>
                                         </ul>
                                     </li>
@@ -52,7 +76,7 @@ export default function MenuBar() {
                                     </Link>
                                     <Link  to="/contact">
                                          <li ><span className='a'>Contact</span></li>
-                                    </Link>
+                                    </Link> */}
 
                                 </ul>
                             </div>
