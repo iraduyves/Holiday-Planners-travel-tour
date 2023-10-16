@@ -416,5 +416,5 @@ const Tourlist = () => {
         </div>
     )
 }
-nnnnnnnnnn
+nnnnnnnnn
 export default Tourlist
