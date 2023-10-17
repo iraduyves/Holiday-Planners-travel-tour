@@ -5,76 +5,78 @@ import { FaSearch } from '@react-icons/all-files/fa/FaSearch'
 import '../../Components/navbar/navbar.css'
 import '../../Components/navbar/navbar.css'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
 
+
+
+export const tourlist = [
+
+       {
+           
+           name: "CONGO",
+           img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image1.jpg",
+           title: "Holiday Planners is a World Leading Online Tour Booking Platform",
+           Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
+           price: "$1200",
+           discount: "15%",
+           users: "15+ peoples",
+           duration: "6Days 3Hours"
+       },
+       {
+           name: "GREECE",
+           img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image2.jpg",
+           title: "Holiday Planners is a World Leading Online Tour Booking Platform",
+           Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
+           price: "$2500",
+           discount: '45%',
+           users: "65+ peoples",
+           duration: "2Days 1Hour"
+       },
+       {
+           name: "RWANDA",
+           img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image4.jpg",
+           title: "Holiday Planners is a World Leading Online Tour Booking Platform",
+           Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
+           price: "$1200",
+           discount: '5%',
+           users: "34+ peoples",
+           duration: "1Day 12Hours"
+       },
+       {
+           name: "SWITZLAND",
+           img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image1.jpg",
+           title: "Holiday Planners is a World Leading Online Tour Booking Platform",
+           Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
+           price: "$1200",
+           discount: '8%',
+           users: "23+ peoples",
+           duration: " 7Hours"
+       },
+       {
+           name: "USA",
+           img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image2.jpg",
+           title: "Holiday Planners is a World Leading Online Tour Booking Platform",
+           Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
+           price: "$1200",
+           discount: '3%',
+           users: "15+ peoples",
+           duration: "8Days 2Hours"
+       },
+       {
+           name: "CANADA",
+           img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image4.jpg",
+           title: "Holiday Planners is a World Leading Online Tour Booking Platform",
+           Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
+           price: "$1200",
+           discount: '10%',
+           users: "95+peoples",
+           duration: "1Day 23Hours"
+       },
+   
+   ];
 const Tourlist = () => {
-
-
-    const tourlist = [
-
-        {
-            name: "Italy",
-            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image1.jpg",
-            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
-            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
-            price: "$1200",
-            discount: "15%",
-            users:"15+ peoples",
-            duration:"6Days 3Hours"
-        },
-        {
-            name: "Greece",
-            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image2.jpg",
-            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
-            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
-            price: "$2500",
-            discount: '45%',
-            users:"65+ peoples",
-            duration:"2Days 1Hour"
-        },
-        {
-            name: "Greece",
-            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image4.jpg",
-            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
-            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
-            price: "$1200",
-            discount: '5%',
-            users:"34+ peoples",
-            duration:"1Day 12Hours"
-        },
-        {
-            name: "Switzland",
-            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image1.jpg",
-            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
-            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
-            price: "$1200",
-            discount: '8%',
-            users:"23+ peoples",
-            duration:" 7Hours"
-        },
-        {
-            name: "Rwanda",
-            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image2.jpg",
-            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
-            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
-            price: "$1200",
-            discount: '3%',
-            users:"15+ peoples",
-            duration:"8Days 2Hours"
-        },
-        {
-            name: "Canada",
-            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image4.jpg",
-            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
-            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
-            price: "$1200",
-            discount: '10%',
-            users:"95+peoples",
-            duration:"1Day 23Hours"
-        },
-
-    ];
 
     return (
         <div className="main-tour-list pb-70">
@@ -122,43 +124,11 @@ const Tourlist = () => {
                             </div>
                             <div className="tour-filter-result">
                                 <div className="row">
-                                    {/* {tourlist.map((item, index) => (
+
+                                    {tourlist.map((item, index) => (
                                         <div className="colrow6" key={index}>
                                             <div className="tour-box">
-                                                <div className="tour-box-image back-image" style={{ backgroundImage: `url("${item.img}")` }}> </div>
-                                                <div className="tour-box-content">
-                                                    <div className="tour-box-content">
-                                                        <div className="tour-box-label">
-                                                            <div className="tour-box-inner-label">
-                                                                <h4 className="h4-title-title">{tourlist.name}</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div className="tour-box-title">
-                                                            <h4 className="h4-title">{tourlist.title}</h4>
-                                                        </div>
-                                                        <div className="tour-box-description">
-                                                            <p>{tourlist.Description}</p>
-                                                        </div>
-
-                                                        <div className="tour-box-bottom">
-                                                            <div className="tour-price">
-                                                                <h3 className="h3-title">{tourlist.price}</h3>
-                                                            </div>
-                                                            <div className="book-now-button">
-                                                                <div className="a">
-                                                                    <Link to="/singletourpage"> <span className="sec-btn">Book Now</span></Link>
-                                                                </div>                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    ))} */}
-                                    {/* {tourlist.map((item, index) => (
-                                        <div className="colrow6" key={index}>
-                                            <div className="tour-box">
-                                                <div className="tour-box-image back-image" style={{ backgroundImage: `url("${item.img}")` }}><span className="discount-label">{tourlist.discount}</span></div>
+                                                <div className="tour-box-image back-image" style={{ backgroundImage: `url("${item.img}")` }}><span className="discount-label">{item.discount}</span></div>
                                                 <div className="tour-box-content">
                                                     <div className="tour-box-label">
                                                         <div className="tour-box-inner-label">
@@ -169,102 +139,45 @@ const Tourlist = () => {
                                                         <h4 className="h4-title">{item.title}</h4>
                                                     </div>
                                                     <div className="tour-box-description">
-                                                        <p style={{color:'black',fontSize:'small'}}>{item.Description}</p>
+                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.Description}</p>
                                                     </div>
                                                     <div className="tour-info-box">
                                                         <div className="row">
-                                                            <div className="colrow6">
+                                                            <div className="col-6">
                                                                 <div className="tour-info">
                                                                     <div className="tour-info-icon">
                                                                         <div className="i"><FaClock /></div>
                                                                     </div>
                                                                     <div className="tour-info-content">
                                                                         <h5 className="h6-title">Duration</h5>
-                                                                        <p style={{color:'black',fontSize:'small'}}>{item.duration}</p>
+                                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.duration}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="col-6">
                                                                 <div className="tour-info">
                                                                     <div className="tour-info-icon">
-                                                                        <div className="i"><FaUserFriends /><div>
-                                                                        </div>
-                                                                            <div className="tour-info-content" >
-                                                                                <h5 className="h6-title">Group Size</h5>
-                                                                                <p style={{color:'black',fontSize:'small'}}>{item.users}</p>
-                                                                            </div>
-                                                                        </div>
+                                                                        <div className="i"><FaUserFriends /></div>
+                                                                    </div>
+                                                                    <div className="tour-info-content">
+                                                                        <h5 className="h6-title">Group Size</h5>
+                                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.users}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="tour-box-bottom">
-                                                                <div className="tour-price">
-                                                                    <h3 className="h3-title">{item.price}</h3>
-                                                                </div>
-                                                                <div className="book-now-button">
-                                                                    <div className="a"><span className='sec-btn'>Book now</span></div>
-                                                                </div>
-                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="tour-box-bottom">
+                                                        <div className="tour-price">
+                                                            <h3 className="h3-title">{item.price}</h3>
+                                                        </div>
+                                                        <div className="book-now-button">
+                                                            <div className="a"><Link to={`/tour/${item.name}`}><span className="sec-btn" >Book Now</span></Link></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-                                    ))} */}
-                               {tourlist.map((item, index) => (
-                                    <div className="colrow6" key={index}>
-                                        <div className="tour-box">
-                                            <div className="tour-box-image back-image"style={{ backgroundImage: `url("${item.img}")` }}><span className="discount-label">{item.discount}</span></div>
-                                            <div className="tour-box-content">
-                                                <div className="tour-box-label">
-                                                    <div className="tour-box-inner-label">
-                                                        <h4 className="h4-title">{item.name}</h4>
-                                                    </div>
-                                                </div>
-                                                <div className="tour-box-title">
-                                                    <h4 className="h4-title">{item.title}</h4>
-                                                </div>
-                                                <div className="tour-box-description">
-                                                    <p style={{color:'black',fontSize:'small'}}>{item.Description}</p>
-                                                </div>
-                                                <div className="tour-info-box">
-                                                    <div className="row">
-                                                        <div className="col-6">
-                                                            <div className="tour-info">
-                                                                <div className="tour-info-icon">
-                                                                    <div className="i"><FaClock /></div>
-                                                                </div>
-                                                                <div className="tour-info-content">
-                                                                    <h5 className="h6-title">Duration</h5>
-                                                                    <p style={{color:'black',fontSize:'small'}}>{item.duration}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <div className="tour-info">
-                                                                <div className="tour-info-icon">
-                                                                    <div className="i"><FaUserFriends /></div>
-                                                                </div>
-                                                                <div className="tour-info-content">
-                                                                    <h5 className="h6-title">Group Size</h5>
-                                                                    <p style={{color:'black',fontSize:'small'}}>{item.users}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="tour-box-bottom">
-                                                    <div className="tour-price">
-                                                        <h3 className="h3-title">{item.price}</h3>
-                                                    </div>
-                                                    <div className="book-now-button">
-                                                        <div className="a"><span className="sec-btn">Book Now</span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     ))}
                                 </div>
@@ -418,3 +331,6 @@ const Tourlist = () => {
 }
 
 export default Tourlist
+Tourlist.propTypes = {
+    tourlists: PropTypes.func.isRequired, 
+  };

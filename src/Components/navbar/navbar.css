@@ -1843,6 +1843,10 @@ textarea.form-input {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.main-tour-detail .row-left .row{
+    margin-left: 0;
+    gap:0;
+}
 
 .tour-offer-box-content .price-label {
     display: flex;
@@ -2915,7 +2919,19 @@ blockquote p {
     margin-bottom: 30px;
     border-radius: 5px;
     overflow: hidden;
-    border: none;
+    /* color: #fff; */
+    border: 1;
+    height: 5rem;
+    align-items: center;
+    display: flex;
+    /* background-color: var(--yellow-color); */
+
+}
+.tour-detail-tabbing .nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    flex-wrap: unset;
 }
 
 .tour-detail-tabbing .nav-tabs li.nav-item {

@@ -5,25 +5,53 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import PropTypes from 'prop-types';
+import {tourlist}  from './Tourlist'
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import Itarytour from './Itarytour';
+import { useParams } from 'react-router-dom';
+
+// import { useParams } from 'react-router-dom';
+
+
 
 const SingleTourPage = () => {
+//    console.log({tourlist});
+    const { name } = useParams();
+    console.log(tourlist,name);
+    // const tour = tourlist[name];
+    const single = tourlist.find((item) => item.name  == name);
+    // console.log(single);
+    if (!single) {
+        return <div>Sorry, this tour does not exist.</div>;
+    }
+
     return (
         <>
-        <Itarytour/>
+            <div className="main-banner inner-banner overlay back-image" style={{ backgroundImage: `url("${single.img}")` }}>
+                <div className="sec-wp">
+                    <div className="container">
+                        <div className="row">
+                            <div className="colrow12">
+                                <div className="banner-content">
+                                    <h1 className="h1-title">{single.name}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className="main-tour-detail pb-70">
                 <div className="container">
                     <div className="row">
                         <div className="row-left">
                             <div className="left-side">
-                                <div className="tour-detail-tabbbing">
-                                    <ul className="nav navtabs">
+                                <div className="tour-detail-tabbing">
+                                    <ul className="nav nav-tabs">
                                         <li className="nav-item">
                                             <div className="a">
                                                 <div className="i"><FaInfoCircle />Information</div>
@@ -53,7 +81,7 @@ const SingleTourPage = () => {
                                     <div className="tab-content">
                                         <div className="tab-pane show" style={{ display: 'block', transition: ' opacity .15s linear' }}>
                                             <div className="tab-box-information-tab-box">
-                                                <span className="dicount-label">22% Off</span>
+                                                <span className="dicount-label">{single.discount}</span>
                                                 <div className="row">
                                                     <div className="colx" style={{ flex: '0 0 75%', maxwidth: '75%' }}>
                                                         <div className="tour-title">
@@ -63,36 +91,35 @@ const SingleTourPage = () => {
                                                     <div className="cox1" style={{ flex: '0 0 25%', maxwidth: '25%' }}>
                                                         <div className="tour-price-wp">
                                                             <div className="tour-price">
-                                                                <h3 className="h3-title">$1200</h3>
+                                                                <h3 className="h3-title">{single.price}</h3>
                                                                 <p style={{ color: 'black' }}>Per person</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="tour-short-info-box">
-                                                    <div className="ul">
+                                                    <ul >
                                                         <li>
                                                             <div className="i"><FaClock /></div>
-                                                            <span className="text">2 days</span>
+                                                            <span className="text">{single.duration}</span>
                                                         </li>
                                                         <li>
                                                             <div className="i"><FaUserFriends /></div>
-                                                            <span className="text">6peaple</span>
+                                                            <span className="text">{single.users}</span>
                                                         </li>
                                                         <li>
                                                             <div className="i"><FaMapMarker /></div>
-                                                            <span className="text">Greece</span>
+                                                            <span className="text">{single.name}</span>
                                                         </li>
                                                         <li>
                                                             <div className="i"><FaSun /></div>
                                                             <span className="text">Discovery</span>
                                                         </li>
 
-                                                    </div>
+                                                    </ul>
                                                 </div>
                                                 <div className="tour-description">
-                                                    <p style={{ color: '#2B2B2B' }}> I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian
-                                                        sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams.</p>
+                                                    <p style={{ color: '#2B2B2B' }}> {single.Description}</p>
                                                     <p style={{ color: '#2B2B2B' }}> I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian
                                                         sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as
                                                         I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and
@@ -111,7 +138,7 @@ const SingleTourPage = () => {
                                                                 <h4 className="h4-title">Destination</h4>
                                                             </div>
                                                             <div className="tts-description">
-                                                                <div className="a">Greece</div>
+                                                                <div className="a">{single.name}</div>
                                                             </div>
                                                         </li>
                                                         <li>
@@ -365,3 +392,6 @@ const SingleTourPage = () => {
 }
 
 export default SingleTourPage
+SingleTourPage.propTypes = {
+    tourlist: PropTypes.func.isRequired,
+};

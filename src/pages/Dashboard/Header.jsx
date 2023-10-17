@@ -3,7 +3,7 @@ import
  from 'react-icons/bs'
  import './Dashboard.jsx'
  import PropTypes from 'prop-types';
- import './styles.css'
+ import './dashboard.css'
 
 
 function Header({OpenSidebar}) {
@@ -15,7 +15,7 @@ function Header({OpenSidebar}) {
         <div className='header-left'>
             <BsSearch  className='icon'/>
         </div>
-        <div className='header-right'style={{gap:'2rem'}}>
+        <div className='header-right'>
             <BsFillBellFill className='icon'/>
             <BsFillEnvelopeFill className='icon'/>
             <BsPersonCircle className='icon'/>
