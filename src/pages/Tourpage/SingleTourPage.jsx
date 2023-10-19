@@ -41,7 +41,7 @@ return (
                         <div className="row">
                             <div className="colrow12">
                                 <div className="banner-content">
-                                    <h1 className="h1-title">{single.destination}</h1>
+                                    <h1 className="h1-title">{single.Title  }</h1>
                                 </div>
                             </div>
                         </div>

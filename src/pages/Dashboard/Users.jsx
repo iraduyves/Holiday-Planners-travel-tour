@@ -169,7 +169,7 @@ function Users() {
                                 <tr>
                                     <td>
                                         <div className="img-box-small">
-                                            <img src={item.img} alt="" />
+                                            <img src="https://thumbs.dreamstime.com/z/close-up-portrait-young-rasta-boy-22152046.jpg?w=992" alt="" />
                                         </div>
                                     </td>
                                     <td>{item.fullName}</td>
