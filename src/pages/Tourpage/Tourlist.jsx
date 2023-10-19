@@ -352,5 +352,4 @@ export const tourlistMock = [
     )
 }
 
-export default  
-
+export default Tourlist
