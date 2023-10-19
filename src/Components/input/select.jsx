@@ -2,12 +2,14 @@
 import { useId } from "react"
 import css from "./style.module.css"
 
-export default function Input({
+export default function Select({
     type = "text",
     name = "",
     id = "",
     classname = "",
-    placeholder,
+    // placeholder,
+    options = [],
+    children,
     icon,
     icons,
     register,
@@ -17,18 +19,22 @@ export default function Input({
     const inputId = useId()
     return (
         <label htmlFor={id ?? inputId} className={css.input}>
-            {icon && <span className={css.icon}>{icon}</span>  }
-            <input
+            {icon && <span className={css.icon}>{icon}</span>}
+            <select
                 type={type}
                 name={name}
                 id={id ?? inputId}
                 className={`${classname}`}
-                placeholder={placeholder}
                 onChange={onChange}
                 {...register}
                 {...other}
-            />
-            {<span className={css.icon}>{icon}</span> &&icons  }
+            >
+                {options.length ? options.map(option => (
+                    <option key={option} value={option}>{option}</option>
+                )) : children
+                }
+            </select>
+            {<span className={css.icon}>{icon}</span> && icons}
         </label>
     )
 }

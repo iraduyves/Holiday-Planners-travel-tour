@@ -55,9 +55,9 @@ const AmazingOffer = () => {
               slidesPerView={3}
               navigation
               pagination={{ clickable: true }}
-              scrollbar={{ draggable: true }}
+              // scrollbar={{ draggable: true }}
               loop={true}
-              autoplay={{ delay: 1000 }}
+              autoplay={{ delay: 2000 }}
               onSwiper={(swiper) => console.log(swiper)}
               style={{
                 "--swiper-pagination-color": "#C29D59",

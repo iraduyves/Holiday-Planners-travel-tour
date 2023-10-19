@@ -1,31 +1,47 @@
-import { useMemo } from "react"
+import { useCallback, useMemo, useRef } from "react"
 import logowhite from '/logo-icon-white.svg'
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function MenuBar() {
     const id = useMemo(() => "nav-input-menu", [])
+    const menu_input = useRef(null)
 
-    let links  = [
+    let links = [
         {
-            label :"/",
-            name:"Home"
+            label: "",
+            name: "Home"
         },
         {
-            label :"/",
-            name:"tour"
-        },       {
-            label :"contact",
-            name:"contact"
-        },       {
-            label :"login",
-            name:"Login"
+            label: "tour",
+            name: "tour"
+        },
+        {
+            label: "contact",
+            name: "contact"
+        },
+        {
+            label: "login",
+            name: "Login"
+        },
+        {
+            label: "signup",
+            name: "SignUp"
+        },
+        {
+            label: "dashboard",
+            name: "Dashboard"
         },
     ]
 
+    const move = useCallback(() => {
+        if(!menu_input.current) return
+        menu_input.current.checked = false
+    }, [])
+
     return (
         <>
-            <input type="checkbox" id={id} className="nav-input" />
+            <input type="checkbox" id={id} className="nav-input" ref={menu_input} />
             <label htmlFor={id} className="menu-bar navigation-btn" id='menu-btn'>
                 <span className="first"></span>
                 <span className="second"></span>
@@ -49,18 +65,19 @@ export default function MenuBar() {
                                 <ul>
 
                                     {
-                                        links.map((item ,index)=> {
-                                            return      <Link key={index} to={`/${item.label}`}>
-                                            <li ><span className='a'>{item.name}</span></li>
-  
-                                      </Link>
+                                        links.map((item, index) => {
+                                            return (
+                                                <Link to={`/${item.label}`} key={index} onClick={move}>
+                                                    <li ><span className='a'>{item.name}</span></li>
+                                                </Link>
+                                            )
                                         })
                                     }
-                                
+
                                     {/* <Link  to="/about">
                                          <li ><span className='a'>About</span></li>
                                     </Link> */}
-                                    
+
                                     {/* <li className='dropdown-items dropdown-open'>
                                         <span className='a'>Tour</span>
                                         <ul className='sub-menu'>

@@ -35,11 +35,10 @@ const Instagram = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row instagram-slider">
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                            spaceBetween={10}
-                            slidesPerView={2}
+                            spaceBetween={0}
+                            slidesPerView={6}
                             navigation
                             pagination={{ clickable: true }}
                             // scrollbar={{ draggable: true }}
@@ -57,6 +56,7 @@ const Instagram = () => {
                                 "--swiper-pagination-bullet-margin-right": "2rem"
                             }}
                         >
+                <div className="row instagram-slider">
                     <div className="slick-list">
                         <div className="slick-track">
                             <SwiperSlide>
@@ -261,8 +261,8 @@ const Instagram = () => {
                             </SwiperSlide> 
                         </div>
                     </div>
-                            </Swiper>
                 </div>
+                            </Swiper>
             </div>
         </div>
       </div>

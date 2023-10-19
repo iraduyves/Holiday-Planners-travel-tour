@@ -1,55 +1,59 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaClock, FaEdit, FaEnvelope, FaLock, FaMoneyCheckAlt, FaPenAlt, FaPhone, FaTrashAlt, FaUserEdit } from 'react-icons/fa'
+import axios from '../../config/axios';
 
 
 
-export const users = [
-   
-
+export const usersMock = [
     {
-        id:1,
+        id: 1,
         img: "https://images.squarespace-cdn.com/content/v1/5c5a48b7809d8e364b16c2bf/1614918524858-4HA3SDC8ZWAJLNFZDBHB/NAB+Fun-2.jpg?format=500w",
         name: "Yves",
         email: "yve@gmail.com",
         phone: "(+250) 782045468",
         password: "G76FSF@$khG87",
+        role: "admin",
 
     },
     {
-        id:1,
+        id: 1,
         img: "https://images.squarespace-cdn.com/content/v1/5c5a48b7809d8e364b16c2bf/1614918524858-4HA3SDC8ZWAJLNFZDBHB/NAB+Fun-2.jpg?format=500w",
         name: "Yves",
         email: "yve@gmail.com",
         phone: "(+250) 782045468",
         password: "G76FSF@$khG87",
+        role: "user",
 
     },
     {
-        id:1,
+        id: 1,
         img: "https://images.squarespace-cdn.com/content/v1/5c5a48b7809d8e364b16c2bf/1614918524858-4HA3SDC8ZWAJLNFZDBHB/NAB+Fun-2.jpg?format=500w",
         name: "Yves",
         email: "yve@gmail.com",
         phone: "(+250) 782045468",
         password: "G76FSF@$khG87",
+        role: "admin",
 
     },
     {
-        id:1,
+        id: 1,
         img: "https://images.squarespace-cdn.com/content/v1/5c5a48b7809d8e364b16c2bf/1614918524858-4HA3SDC8ZWAJLNFZDBHB/NAB+Fun-2.jpg?format=500w",
         name: "Yves",
         email: "yve@gmail.com",
         phone: "(+250) 782045468",
         password: "G76FSF@$khG87",
+        role: "user",
 
     },
     {
-        id:1,
+        id: 1,
         img: "https://images.squarespace-cdn.com/content/v1/5c5a48b7809d8e364b16c2bf/1614918524858-4HA3SDC8ZWAJLNFZDBHB/NAB+Fun-2.jpg?format=500w",
         name: "Yves",
         email: "yve@gmail.com",
         phone: "(+250) 782045468",
         password: "G76FSF@$khG87",
+        role: "user",
 
     },
 
@@ -57,16 +61,34 @@ export const users = [
 ];
 function Users() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const navigate =()=> {
-         setIsModalOpen(true)
+    const navigate = () => {
+        setIsModalOpen(true)
     }
-    const navigatefalse =()=> {
-         setIsModalOpen(false)
+    const navigatefalse = () => {
+        setIsModalOpen(false)
     }
-    
-  return (
-    <>
-    {isModalOpen &&(
+    const [users, setUsers] = useState([])
+
+
+    const FetchData = async () => {
+        try {
+            const { data } = await axios.get('/api/v1/auth/users')
+            if (data) {
+                console.log({ data });
+                setUsers(data)
+            }
+        } catch (error) {
+            console.error({ error })
+        }
+    };
+
+    useEffect(() => {
+        FetchData()
+    }, [])
+
+    return (
+        <>
+            {isModalOpen && (
                 <div className="row-right">
                     <div className="right-side">
                         <div className="widget ">
@@ -78,40 +100,40 @@ function Users() {
                                     <div className="row">
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                                <span className="icon"><div className="i"><FaPenAlt/></div></span>
+                                                <span className="icon"><div className="i"><FaPenAlt /></div></span>
                                                 <input type="text" placeholder="User Name..." className="form-input" />
                                             </span>
                                         </div>
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                                <span className="icon"><div className="i"><FaEnvelope/></div></span>
+                                                <span className="icon"><div className="i"><FaEnvelope /></div></span>
                                                 <input type="text" placeholder="Tour Email..." className="form-input" />
                                             </span>
                                         </div>
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                                <span className="icon"><div className="i"><FaPhone/></div></span>
+                                                <span className="icon"><div className="i"><FaPhone /></div></span>
                                                 <input type="text" placeholder="User Phone.." className="form-input" />
                                             </span>
                                         </div>
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                                <span className="icon"><div className="i"><FaLock/></div></span>
+                                                <span className="icon"><div className="i"><FaLock /></div></span>
                                                 <input type="text" placeholder="User Password..." className="form-input" />
                                             </span>
                                         </div>
-                                      
+
                                         <div className="colrow12">
                                             <span className="form-control-span">
                                                 {/* <span className="icon"><div className="i"><FaImages/></div></span> */}
-                                                <input id="image" type="file" name="image" accept="image/*" className="form-input"/>
+                                                <input id="image" type="file" name="image" accept="image/*" className="form-input" />
 
                                             </span>
                                         </div>
-                                       
-              
+
+
                                         <div className="colrow12">
-                                            <input type="button" className="sec-btn find-now-btn"  value="edit"/>
+                                            <input type="button" className="sec-btn find-now-btn" value="edit" />
                                             {/* <button className="sec-btn find-now-btn"><span>Edit</span></button> */}
                                             <button className="sec-btn find-now-btn" type='submit' onClick={navigatefalse}><span>Close</span></button>
                                         </div>
@@ -119,7 +141,7 @@ function Users() {
                                 </form>
                             </div>
                         </div>
-                     
+
                     </div>
                 </div>
             )}
@@ -136,40 +158,42 @@ function Users() {
                             <td>Emails</td>
                             <td>Phone</td>
                             <td>password</td>
+                            <td>Role</td>
                             <td>Edit</td>
                             <td>Delete</td>
                         </thead>
-                        {users.map((item,index)=>(
+                        {users.map((item, index) => (
 
-                        
-                        <tbody key={index}>
-                            <tr>
-                                <td>
-                                    <div className="img-box-small">
-                                       <img src={item.img} alt=""/>
-                                    </div>
-                                </td>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                                <td>{item.phone}</td>
-                                <td>{item.password}</td>
-                                <td>
-                                    <button type="submit" className="i" onClick={navigate} style={{cursor:'pointer'}}><FaEdit className='fa-edit'/></button>
-                                </td>
-                                <td>
 
-                                    <button type='submit' className="i" style={{cursor:'pointer'}}><FaTrashAlt className='fa-trash'/></button>
-                                </td>
-                            </tr>
-                           
-                        </tbody>
+                            <tbody key={index}>
+                                <tr>
+                                    <td>
+                                        <div className="img-box-small">
+                                            <img src={item.img} alt="" />
+                                        </div>
+                                    </td>
+                                    <td>{item.fullName}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.password}</td>
+                                    <td>{item.role}</td>
+                                    <td>
+                                        <button type="submit" className="i" onClick={navigate} style={{ cursor: 'pointer' }}><FaEdit className='fa-edit' /></button>
+                                    </td>
+                                    <td>
+
+                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash' /></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
                         ))}
                     </table>
                 </div>
             </div>
 
         </>
-  )
+    )
 }
 
 export default Users

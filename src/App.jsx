@@ -13,7 +13,7 @@ import AmazingOffer from './Components/AmazingOffer'
 import Highlight from './Components/Highlight'
 import Testimonial from './Components/Testimonial'
 import Tour from './pages/Tourpage/Tour'
-import Tourlist, { tourlist } from './pages/Tourpage/Tourlist'
+import Tourlist from './pages/Tourpage/Tourlist'
 import SingleTourPage from './pages/Tourpage/SingleTourPage'
 import Header from './pages/Dashboard/Header'
 import Sidebar from './pages/Dashboard/Sidebar'
@@ -77,7 +77,7 @@ export function App() {
         <Route path="*" element={<div>NOt Found</div>} />
       </Route>
       <Route path='/dashboard' element={<Layout1/>} >
-        <Route index element={<Home tourlist={tourlist}/>} />
+        <Route index element={<Home />} />
         <Route path='/dashboard/tours' element={<Tours/>} />
         <Route path='/dashboard/bookings' element={<Bookings/>} />
         <Route path='/dashboard/users' element={<Users/>} />

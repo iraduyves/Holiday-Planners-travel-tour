@@ -13,8 +13,8 @@ import { Link } from 'react-router-dom';
 // import {tourlist}  from '../Tourpage/Tourlist'
 
 
-function Home({ tourlist }) {
-  const [tours, setTours] = useState(tourlist);
+function Home() {
+  // const [tours, setTours] = useState(tourlist);
 
   // const handleEditTour = (index, updatedTour) => {
   //   const updatedTours = [...tours];

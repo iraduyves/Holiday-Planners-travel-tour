@@ -41,16 +41,15 @@ const Blogs = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row-blog-slider" style={{ marginTop: '30px' }}>
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                             spaceBetween={50}
-                            slidesPerView={6}
+                            slidesPerView={2}
                             navigation
                             pagination={{ clickable: true }}
                             // scrollbar={{ draggable: true }}
                             loop={true}
-                            autoplay={{ delay: 5000 }}
+                            autoplay={{ delay: 100 }}
                             onSwiper={(swiper) => console.log(swiper)}
                             style={{
                                 "--swiper-pagination-color": "#C29D59",
@@ -63,6 +62,7 @@ const Blogs = () => {
                                 "--swiper-pagination-bullet-margin-right": "2rem"
                             }}
                         >
+                    <div className="row-blog-slider" style={{ marginTop: '30px' }}>
                             <SwiperSlide>
                                 <div className="row-right">
                                     <div className="blog-box">
@@ -114,8 +114,8 @@ const Blogs = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
-                        </Swiper>
                     </div>
+                        </Swiper>
                     <div className="row">
                         <div className="rowleft12">
                             <div className="blog-learn-btn for-mob">
@@ -127,7 +127,7 @@ const Blogs = () => {
                     </div>
                 </div>
             </div>
-            <Instagram/>
+            {/* <Instagram/> */}
             <Parterner/>
         </>
     )

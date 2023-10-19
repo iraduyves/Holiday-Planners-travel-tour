@@ -10,6 +10,11 @@ import './dashboard.css'
 import { Link } from 'react-router-dom';
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
+    const logout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('access_token')
+        window.location.assign('/login')
+    }
     return (
         <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
             <div className='sidebar-title'>
@@ -59,10 +64,10 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                         <BsFillGearFill className='icon' /> Setting
                     </a>
                 </li>
-                <li className='sidebar-list-item'>
-                    <a href="">
+                <li className='sidebar-list-item' onClick={logout}>
+                    
                         <BiSolidLogOutCircle className='icon' /> Logout
-                    </a>
+                   
                 </li>
             </ul>
         </aside>

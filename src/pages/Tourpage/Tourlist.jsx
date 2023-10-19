@@ -6,16 +6,19 @@ import '../../Components/navbar/navbar.css'
 import '../../Components/navbar/navbar.css'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import axios from '../../config/axios';
+import { TourContent } from '../../context/Tour';
 
 
 
 
 
-export const tourlist = [
+export const tourlistMock = [
 
        {
            
-           name: "CONGO",
+           name: "Kenya",
            img: "https://html.geekcodelab.com/holiday-planners/assets/images/tour-box-image1.jpg",
            title: "Holiday Planners is a World Leading Online Tour Booking Platform",
            Description: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.",
@@ -76,7 +79,26 @@ export const tourlist = [
        },
    
    ];
-const Tourlist = () => {
+
+   
+   const Tourlist = () => {
+    const { Tour, setTour } = useContext(TourContent)
+ 
+    const FetchData = useCallback(async () => {
+        try {
+            const { data } = await axios.get('/api/v1/tour/')
+            if (data) {
+                console.log({ data });
+                setTour(data)
+            }
+        } catch (error) {
+            console.error({ error })
+        }
+    }, [setTour]);
+ 
+    useEffect(() => {
+        FetchData()
+    }, [FetchData])
 
     return (
         <div className="main-tour-list pb-70">
@@ -125,21 +147,21 @@ const Tourlist = () => {
                             <div className="tour-filter-result">
                                 <div className="row">
 
-                                    {tourlist.map((item, index) => (
+                                    {Tour.map((item, index) => (
                                         <div className="colrow6" key={index}>
                                             <div className="tour-box">
-                                                <div className="tour-box-image back-image" style={{ backgroundImage: `url("${item.img}")` }}><span className="discount-label">{item.discount}</span></div>
+                                                <div className="tour-box-image back-image" style={{ backgroundImage: `url("${item.backdropImage}")` }}><span className="discount-label">15%</span></div>
                                                 <div className="tour-box-content">
                                                     <div className="tour-box-label">
                                                         <div className="tour-box-inner-label">
-                                                            <h4 className="h4-title">{item.name}</h4>
+                                                            <h4 className="h4-title">{item.destination}</h4>
                                                         </div>
                                                     </div>
                                                     <div className="tour-box-title">
-                                                        <h4 className="h4-title">{item.title}</h4>
+                                                        <h4 className="h4-title">{item.Title}</h4>
                                                     </div>
                                                     <div className="tour-box-description">
-                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.Description}</p>
+                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.Description ?? 'no description'}</p>
                                                     </div>
                                                     <div className="tour-info-box">
                                                         <div className="row">
@@ -150,7 +172,7 @@ const Tourlist = () => {
                                                                     </div>
                                                                     <div className="tour-info-content">
                                                                         <h5 className="h6-title">Duration</h5>
-                                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.duration}</p>
+                                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.fromMonth}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -161,7 +183,7 @@ const Tourlist = () => {
                                                                     </div>
                                                                     <div className="tour-info-content">
                                                                         <h5 className="h6-title">Group Size</h5>
-                                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.users}</p>
+                                                                        <p style={{ color: 'black', fontSize: 'small' }}>{item.GroupSize}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -169,10 +191,10 @@ const Tourlist = () => {
                                                     </div>
                                                     <div className="tour-box-bottom">
                                                         <div className="tour-price">
-                                                            <h3 className="h3-title">{item.price}</h3>
+                                                            <h3 className="h3-title">$1200</h3>
                                                         </div>
                                                         <div className="book-now-button">
-                                                            <div className="a"><Link to={`/tour/${item.name}`}><span className="sec-btn" >Book Now</span></Link></div>
+                                                            <div className="a"><Link to={`/tour/${item._id}`}><span className="sec-btn" >Book Now</span></Link></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -330,7 +352,5 @@ const Tourlist = () => {
     )
 }
 
-export default Tourlist
-Tourlist.propTypes = {
-    tourlists: PropTypes.func.isRequired, 
-  };
+export default  
+

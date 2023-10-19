@@ -128,6 +128,8 @@ p {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap);
+    align-items: center;
+    text-align: left;
 
     &>* {
         flex: 1 1 10rem;

@@ -37,7 +37,7 @@ const Parterner = () => {
                                     slidesPerView={3}
                                     navigation
                                     pagination={{ clickable: true }}
-                                    scrollbar={{ draggable: true }}
+                                    // scrollbar={{ draggable: true }}
                                     loop={true}
                                     autoplay={{ delay: 1000 }}
                                     onSwiper={(swiper) => console.log(swiper)}
@@ -65,7 +65,28 @@ const Parterner = () => {
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo3.png"} alt="" />
+                                </div>
+                            </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                            <div className="colrow3 slick-slide slick-cloned">
+                                <div className="partners-logo-box">
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo1.png"} alt="" />
+                                </div>
+                            </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                            <div className="colrow3 slick-slide slick-cloned">
+                                <div className="partners-logo-box">
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo4.png"} alt="" />
+                                </div>
+                            </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                            <div className="colrow3 slick-slide slick-cloned">
+                                <div className="partners-logo-box">
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo3.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
@@ -79,63 +100,42 @@ const Parterner = () => {
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo1.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo4.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo1.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo3.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo1.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
                             <SwiperSlide>
                             <div className="colrow3 slick-slide slick-cloned">
                                 <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
-                                </div>
-                            </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="colrow3 slick-slide slick-cloned">
-                                <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
-                                </div>
-                            </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="colrow3 slick-slide slick-cloned">
-                                <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
-                                </div>
-                            </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="colrow3 slick-slide slick-cloned">
-                                <div className="partners-logo-box">
-                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo2.png"} alt="" />
+                                    <img src={"	https://html.geekcodelab.com/holiday-planners/assets/images/partners-logo4.png"} alt="" />
                                 </div>
                             </div>
                             </SwiperSlide>
