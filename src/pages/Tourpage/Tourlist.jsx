@@ -353,4 +353,3 @@ export const tourlistMock = [
 }
 
 export default Tourlist
-fg
