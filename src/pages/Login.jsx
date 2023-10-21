@@ -37,10 +37,6 @@ const Login = () => {
     setLoad(() => false)
   };
 
-  // const onSubmit = (data) => {
-  //   // console.log(data, {server: import.meta.env.VITE_SERVER_URL});
-  // };
-
 
 
   return (

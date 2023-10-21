@@ -110,18 +110,43 @@ function Tour() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const { Tour, setTour } = useContext(TourContent)
-    const onSubmit = async (body) => {
+    // const onSubmit = async (body) => {
+    //     //   const data = new FormData();
 
+
+    //     try {
+    //         const { data } = await axios.post('/api/v1/tour/create', body, { headers: { Authorization: 'Bearer ' + localStorage.getItem('access_token') } })
+    //         if (data) {
+    //             console.log({ data });
+    //         }
+    //     } catch (error) {
+    //         console.error({ error })
+    //     }
+
+    // };
+
+    const onSubmit = async (data) => {
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('title', data.title);
+        formData.append('description', data.description);
+        formData.append('users', data.users);
+        formData.append('duration', data.duration);
+        formData.append('image', data.image[0]); // Assuming 'image' is the name of your input field.
+      
         try {
-            const { data } = await axios.post('/api/v1/tour/create', body, { headers: { Authorization: 'Bearer ' + localStorage.getItem('access_token') } })
-            if (data) {
-                console.log({ data });
-            }
+          const response = await axios.post('/api/v1/tour/create', formData);
+      
+          if (response.data) {
+            console.log('Tour created:', response.data);
+            // You can add code here to handle the success response.
+          }
         } catch (error) {
-            console.error({ error })
+          console.error('Error creating tour:', error);
+          // You can add code here to handle the error.
         }
-
-    };
+      };
+      
 
     const deletetour = async (id) => {
         try {

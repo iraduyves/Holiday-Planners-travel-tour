@@ -74,7 +74,7 @@ const Homepage = () => {
         <div className="image-info">
           <h2>{images[currentDiv].title}</h2>
           <p>{images[currentDiv].Description}</p>
-          <button className="slider-arrow-next" onClick={nextImage}>Next</button>
+          {/* <button className="slider-arrow-next" onClick={nextImage}>Next</button> */}
         </div>
       </div>
       <MainForm/>
