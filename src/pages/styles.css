@@ -24,6 +24,7 @@
     padding: 20px;
     border-radius: 5px;
     transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+    min-width: 35ch;
 }
 
 h2 {

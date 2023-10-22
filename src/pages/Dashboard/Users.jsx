@@ -86,6 +86,19 @@ function Users() {
         FetchData()
     }, [])
 
+    const deleteUser = async (email) => {
+        try {
+            const { data } = await axios.delete('/api/v1/auth/users/delete/' + email)
+            if (data) {
+
+                console.log({ data });
+            }
+        } catch (error) {
+            console.error({ error })
+        }
+
+    }
+
     return (
         <>
             {isModalOpen && (
@@ -182,7 +195,7 @@ function Users() {
                                     </td>
                                     <td>
 
-                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash' /></button>
+                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash'  onClick={() => deleteUser(item.email)}/></button>
                                     </td>
                                 </tr>
 

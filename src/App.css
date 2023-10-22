@@ -85,6 +85,7 @@ h5,
 h6 {
   font-family: var(--secondary-font-family);
   font-weight: bold;
+  line-height: normal;
 }
 
 p {

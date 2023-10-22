@@ -106,44 +106,7 @@ export const tourlistMock = [
                 <div className="row">
                     <div className="row-left">
                         <div className="left-side">
-                            <div className="tour-filter" style={{ marginBottom: '30px' }}>
-                                <form >
-                                    <div className="row no-gutters">
-                                        <div className="row-right">
-                                            <label className="form-input filter-label">Sort By:</label>
-                                        </div>
-                                        <div className="row-right">
-                                            <span className="form-control-span release-wrap">
-                                                <select className="form-input">
-                                                    <option value="" >Release Date</option>
-                                                    <option value="" >Tour Date</option>
-                                                    <option value="" >title</option>
-                                                    <option value="" >Price</option>
-                                                    <option value="" >Popularity</option>
-                                                    <option value="" >Rating</option>
-                                                    <option value="" >Duration</option>
-                                                </select>
-                                                <span className="arrow">
-                                                    <div className="i"><FaArrowDown /></div>
-                                                </span>
-                                            </span>
-                                        </div>
-                                        <div className="row-right">
-                                            <span className="form-control-span order-wrap">
-                                                <select className="form-input">
-                                                    <option value="">Ascending</option>
-                                                    <option value="" >Descending</option>
-                                                </select>
-                                                <span className="arrow">
-                                                    <div className="i">
-                                                        <FaArrowDown />
-                                                    </div>
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            
                             <div className="tour-filter-result">
                                 <div className="row">
 

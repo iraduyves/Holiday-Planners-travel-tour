@@ -107,7 +107,7 @@ function EditModal({ selectedItem, navigatefalse }) {
 }
 
 function Tour() {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors }} = useForm();
 
     const { Tour, setTour } = useContext(TourContent)
     // const onSubmit = async (body) => {
@@ -128,11 +128,11 @@ function Tour() {
     const onSubmit = async (data) => {
         const formData = new FormData();
         formData.append('name', data.name);
-        formData.append('title', data.title);
+        formData.append('Title', data.title);
         formData.append('description', data.description);
         formData.append('users', data.users);
         formData.append('duration', data.duration);
-        formData.append('image', data.image[0]); // Assuming 'image' is the name of your input field.
+        formData.append('backdropImage', data.image[0]); // Assuming 'image' is the name of your input field.
       
         try {
           const response = await axios.post('/api/v1/tour/create', formData);

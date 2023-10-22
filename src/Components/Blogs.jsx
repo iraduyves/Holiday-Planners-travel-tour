@@ -44,22 +44,29 @@ const Blogs = () => {
                         <Swiper
                             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                             spaceBetween={50}
-                            slidesPerView={2}
+                            // slidesPerView={2}
                             navigation
                             pagination={{ clickable: true }}
                             // scrollbar={{ draggable: true }}
+                            breakpoints={{
+                                0: {
+                                  slidesPerView: 1,
+                                },
+                                700: {
+                                  slidesPerView:2,
+                                },
+                               
+                                
+                              }}
                             loop={true}
-                            autoplay={{ delay: 100 }}
+                            autoplay={{ delay: 2000 }}
                             onSwiper={(swiper) => console.log(swiper)}
                             style={{
                                 "--swiper-pagination-color": "#C29D59",
                                 "--swiper-navigation-color": "#C29D59",
                                 "--swiper-pagination-bullet-inactive-color": "RGB(175, 179, 175)",
                                 "--swiper-pagination-bullet-inactive-opacity": "1",
-                                "--swiper-pagination-bullet-size": "10px",
-                                "--swiper-pagination-bullet-horizontal-gap": "10px",
-                                "--swiper-pagination-bullet-margin-left": "2rem",
-                                "--swiper-pagination-bullet-margin-right": "2rem"
+                           
                             }}
                         >
                     <div className="row-blog-slider" style={{ marginTop: '30px' }}>

@@ -22,7 +22,7 @@ const Navbar = () => {
     })
 
     return (
-        <header className={`site-header ${isStatic ? 'static-header' : ''}`}>
+        <header className={`site-header ${!isStatic ? 'static-header' : ''}`}>
             <div className="top-header">
                 <div className="container">
                     <div className="row">

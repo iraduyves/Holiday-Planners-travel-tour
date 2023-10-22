@@ -52,7 +52,18 @@ const AmazingOffer = () => {
 
               modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
               spaceBetween={50}
-              slidesPerView={3}
+              // slidesPerView={2}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                700: {
+                  slidesPerView:2,
+                },
+                900: {
+                  slidesPerView:3,
+                },
+              }}
               navigation
               pagination={{ clickable: true }}
               // scrollbar={{ draggable: true }}

@@ -315,7 +315,7 @@ return (
                                                         <input type="email" placeholder="Email *" className="form-input" required />
                                                     </span>
                                                 </div>
-                                                <div className="colrwo12">
+                                                <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaEnvelope /></div></span>
                                                         <input type="email" placeholder="Confirm Email *" className="form-input" required />
