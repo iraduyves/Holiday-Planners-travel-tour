@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { FaClock, FaEdit, FaEnvelope, FaLock, FaMoneyCheckAlt, FaPenAlt, FaPhone, FaTrashAlt, FaUserEdit } from 'react-icons/fa'
+import {  FaEdit, FaEnvelope, FaLock, FaPenAlt, FaPhone, FaTrashAlt, } from 'react-icons/fa'
 import axios from '../../config/axios';
 
 

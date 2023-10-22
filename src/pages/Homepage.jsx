@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
-import Navbar from '../Components/navbar/Navbar'
-import { Link } from 'react-router-dom'
-
 import './styles.css'
-import Footer from '../Components/Footer'
 import MainForm from '../Components/MainForm'
-import About from './About'
 import '../Components/navbar/navbar.css'
 
 

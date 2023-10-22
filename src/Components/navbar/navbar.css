@@ -1495,7 +1495,7 @@ textarea.form-input {
 .main-about.common-sec {
     padding-top: 80px;
     opacity: 0.95;
-    position: absolute;
+  
 }
 
 .about-image-box.big {
@@ -1532,6 +1532,17 @@ textarea.form-input {
     padding-right: 26px;
     padding-top: 30px;
 }
+@media screen and (max-width:700px){
+    .main-about .about-content-text p{
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: var(--transition);
+    }
+    
+}
+
 
 .colrow6 {
     flex: 0 0 50%;

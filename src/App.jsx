@@ -23,6 +23,7 @@ import Home from './pages/Dashboard/Home'
 import { useState } from 'react'
 import Bookings from './pages/Dashboard/Bookings'
 import Users from './pages/Dashboard/Users'
+import About from './pages/About'
 
 function Layout1() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
@@ -69,6 +70,7 @@ export function App() {
         <Route index element={<Homepage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/about' element={<About />} />
         <Route path='/contact' element={<ConctactUs />} />
         <Route path='/tour' element={<Tour />} />
         <Route path='/tour/:name' element={<SingleTourPage />} />

@@ -1,12 +1,11 @@
-import { FaAngleRight, FaArrowDown, FaArrowRight, FaCalendar, FaCaretDown, FaEnvelope, FaMapMarker, FaPhone } from 'react-icons/fa'
+import { FaAngleRight, FaArrowRight, FaCalendar, FaCaretDown, FaEnvelope, FaMapMarker, FaPhone } from 'react-icons/fa'
 import { FaClock } from '@react-icons/all-files/fa/FaClock';
 import { FaUserFriends } from '@react-icons/all-files/fa/FaUserFriends'
 import { FaSearch } from '@react-icons/all-files/fa/FaSearch'
 import '../../Components/navbar/navbar.css'
 import '../../Components/navbar/navbar.css'
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect} from 'react';
 import axios from '../../config/axios';
 import { TourContent } from '../../context/Tour';
 

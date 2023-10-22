@@ -40,7 +40,7 @@ const About = () => {
 
                             </h2>
                             <div className="about-content-text">
-                                <p>
+                                <p style={{color:'black',fontSize:'small'}}>
                                    far far awy , behind the world mountains, far from the countries Rwanda 
                                    and Canada , there live the blind texts. \separated  they live in Kigali at 
                                    the south cost of the semantics, a large language ocen . A small liver named nile

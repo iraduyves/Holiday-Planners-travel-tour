@@ -5,7 +5,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import PropTypes from 'prop-types';
+
 
 
 // Import Swiper styles
