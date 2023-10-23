@@ -26,11 +26,19 @@ function Header({ OpenSidebar }) {
         <BsSearch className='icon' />
       </div>
       <div className='header-right'>
-      {user &&<p style={{fontSize:'large',color:'red'}}>{user.email}</p>}
         <BsFillBellFill className='icon' />
         <BsFillEnvelopeFill className='icon' />
-        <BsPersonCircle className='icon' />
+        {/* <BsPersonCircle className='icon' /> */}
       </div>
+
+      {user &&
+        <div style={{display:'flex',justifyContent:'space-between'}}>
+          <h2 style={{ fontSize: 'x-large', color: '#9E9EA4',cursor:'pointer' }}>{user.email}</h2>
+          <div className="img-box-small">
+            <img src="https://i.pinimg.com/550x/d3/91/41/d391417c2dc4c794aca41da6080bed7a.jpg" alt="" style={{cursor:'pointer' }}/>
+          </div>
+        </div>
+      }
     </header>
   )
 }
