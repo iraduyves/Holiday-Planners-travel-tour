@@ -2,6 +2,9 @@
 import { useEffect, useState } from 'react';
 import {  FaEdit, FaEnvelope, FaLock, FaPenAlt, FaPhone, FaTrashAlt, } from 'react-icons/fa'
 import axios from '../../config/axios';
+import Select from '../../Components/input/select';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
@@ -61,6 +64,14 @@ export const usersMock = [
 ];
 function Users() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+    const navigateAdd = () => {
+        setIsAddModalOpen(true)
+    }
+    const navigateAddfalse = () => {
+        setIsAddModalOpen(false)
+    }
     const navigate = () => {
         setIsModalOpen(true)
     }
@@ -81,14 +92,31 @@ function Users() {
             console.error({ error })
         }
     };
-
+    // /api/v1/auth/users/update/:email 
     useEffect(() => {
         FetchData()
     }, [])
 
     const deleteUser = async (email) => {
+        // const userConfirmed = window.confirm('Are you sure you want to delete?');
+//         if (userConfirmed){
+// }
         try {
             const { data } = await axios.delete('/api/v1/auth/users/delete/' + email)
+            if (data) {
+
+                console.log({ data });
+            }
+        } catch (error) {
+            console.error({ error })
+            window.alert({error})
+        }
+
+}
+        const UpdateUser = async (email) => {
+
+        try {
+            const { data } = await axios.delete('/api/v1/auth/users/update/:email ' + email)
             if (data) {
 
                 console.log({ data });
@@ -138,8 +166,7 @@ function Users() {
 
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                                {/* <span className="icon"><div className="i"><FaImages/></div></span> */}
-                                                <input id="image" type="file" name="image" accept="image/*" className="form-input" />
+                                            <Select name='roles' options={['admin', 'user']} icon={<><FontAwesomeIcon icon={faUser} className='faicon' /></>} className='faicon' />
 
                                             </span>
                                         </div>
@@ -147,6 +174,63 @@ function Users() {
 
                                         <div className="colrow12">
                                             <input type="button" className="sec-btn find-now-btn" value="edit" />
+                                            {/* <button className="sec-btn find-now-btn"><span>Edit</span></button> */}
+                                            <button className="sec-btn find-now-btn" type='submit' onClick={navigatefalse}><span>Close</span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            )}
+            {isAddModalOpen && (
+                <div className="row-right">
+                    <div className="right-side">
+                        <div className="widget ">
+                            <div className="line-title">
+                                <h4 className="h4-title">Create New User</h4>
+                            </div>
+                            <div className="find-tour-form">
+                                <form >
+                                    <div className="row">
+                                        <div className="colrow12">
+                                            <span className="form-control-span">
+                                                <span className="icon"><div className="i"><FaPenAlt /></div></span>
+                                                <input type="text" placeholder="User Name..." className="form-input" />
+                                            </span>
+                                        </div>
+                                        <div className="colrow12">
+                                            <span className="form-control-span">
+                                                <span className="icon"><div className="i"><FaEnvelope /></div></span>
+                                                <input type="text" placeholder="Tour Email..." className="form-input" />
+                                            </span>
+                                        </div>
+                                        <div className="colrow12">
+                                            <span className="form-control-span">
+                                                <span className="icon"><div className="i"><FaPhone /></div></span>
+                                                <input type="text" placeholder="User Phone.." className="form-input" />
+                                            </span>
+                                        </div>
+                                        <div className="colrow12">
+                                            <span className="form-control-span">
+                                                <span className="icon"><div className="i"><FaLock /></div></span>
+                                                <input type="text" placeholder="User Password..." className="form-input" />
+                                            </span>
+                                        </div>
+
+                                        <div className="colrow12">
+                                            <span className="form-control-span">
+                                                 <Select name='roles' options={['admin', 'user']} icon={<><FontAwesomeIcon icon={faUser} className='faicon' /></>} className='faicon' />
+                                                
+
+                                            </span>
+                                        </div>
+
+
+                                        <div className="colrow12">
+                                            <input type="button" className="sec-btn find-now-btn" value="Create" />
                                             {/* <button className="sec-btn find-now-btn"><span>Edit</span></button> */}
                                             <button className="sec-btn find-now-btn" type='submit' onClick={navigatefalse}><span>Close</span></button>
                                         </div>
@@ -202,6 +286,7 @@ function Users() {
                             </tbody>
                         ))}
                     </table>
+                        <button className="sec-btn" style={{ cursor: 'pointer' }} onClick={navigateAdd}>ADD NEW USER</button>
                 </div>
             </div>
 

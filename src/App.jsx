@@ -24,6 +24,8 @@ import { useState } from 'react'
 import Bookings from './pages/Dashboard/Bookings'
 import Users from './pages/Dashboard/Users'
 import About from './pages/About'
+import { useContext } from 'react'
+import { UserContent } from './context/user'
 
 function Layout1() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
@@ -60,9 +62,6 @@ function Layout() {
 
 export function App() {
 
-
-
-
   return (
 
     <Routes>
@@ -79,7 +78,7 @@ export function App() {
         <Route path="*" element={<div>NOt Found</div>} />
       </Route>
       <Route path='/dashboard' element={<Layout1/>} >
-        <Route index element={<Home />} />
+        <Route index element={<Home/>} />
         <Route path='/dashboard/tours' element={<Tours/>} />
         <Route path='/dashboard/bookings' element={<Bookings/>} />
         <Route path='/dashboard/users' element={<Users/>} />

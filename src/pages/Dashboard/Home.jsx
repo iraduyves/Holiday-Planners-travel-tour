@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 // import {tourlist}  from '../Tourpage/Tourlist'
 
 
-function Home() {
+function Home({user}) {
   // const [tours, setTours] = useState(tourlist);
 
   // const handleEditTour = (index, updatedTour) => {
@@ -158,6 +158,8 @@ function Home() {
 
 
       </div>
+
+      
      
     </main>
   )
@@ -165,5 +167,5 @@ function Home() {
 // onClick={() => handleEditTour(index, updatedTour)}
 export default Home
 Home.propTypes = {
-  tourlist: PropTypes.func.isRequired,
+  user: PropTypes.func.isRequired,
 };

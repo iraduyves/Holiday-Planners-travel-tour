@@ -26,6 +26,7 @@ function Header({ OpenSidebar }) {
         <BsSearch className='icon' />
       </div>
       <div className='header-right'>
+      {user &&<p style={{fontSize:'large',color:'red'}}>{user.email}</p>}
         <BsFillBellFill className='icon' />
         <BsFillEnvelopeFill className='icon' />
         <BsPersonCircle className='icon' />

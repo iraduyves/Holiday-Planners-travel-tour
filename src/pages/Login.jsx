@@ -12,8 +12,11 @@ import { UserContent } from '../context/user';
 
 
 const Login = () => {
+   const [profileuser ,Setprofileuser]  =useState([""])
 
   // const { register, handleSubmit, formState: { errors } } = useForm();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [dataMessage, setDataMessage] = useState('');
 
   const { setUser } = useContext(UserContent)
   const navigate = useNavigate()
@@ -28,17 +31,28 @@ const Login = () => {
         localStorage.setItem("access_token", data.access_token)
         console.log({ data });
         setUser(data.user)
+        Setprofileuser(data.user)
         reset();
         (data.user.role == 'admin') ? navigate('/dashboard') : navigate('/')
+        
+        // const dataResponse = data.response.data;
+        // const dataMessage = dataResponse.message;
+        // setDataMessage(dataMessage);
       }
     } catch (error) {
-      console.error({ error })
+      if (error.response && error.response.data) {
+        const errorResponse = error.response.data;
+        const errorMessage = errorResponse.message;
+        
+        // Update the error message in the state
+        setErrorMessage(errorMessage);
+      }
     }
     setLoad(() => false)
   };
-
-
-
+  
+  
+  
   return (
     <div style={{ paddingTop: '140px' }}>
       <div className='sign'>
@@ -51,15 +65,19 @@ const Login = () => {
           <div>
             <Input icon={<><FontAwesomeIcon icon={faLock} className='faicon' /></>} name='name' placeholder='Password' register={register("password", { required: true })} />
           </div>
-          <div>{errors.password && <p>Password is required</p>}</div>
+          <div>{errors.password && <p style={{ color: 'red', fontSize: 'large' }}>Password is required</p>}</div>
           <div>
+           {dataMessage&& <div><p  style={{ color: 'red', fontSize: 'large' }}>{dataMessage}</p></div>}
+           {errorMessage&& <div><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
 
-            <Link to="/signup"> <span style={{ color: 'blue' }}> or Signup?</span></Link>
             <Link to="/signup"> <span style={{ color: 'blue' }}>forgot Password?</span></Link>
+            <Link to="/signup"> <span style={{ color: 'blue' }}> or Signup?</span></Link>
           </div>
 
           <div>
-            <button className='sec-btn' disabled={load}>{load ? "loading..." : "login"}</button>
+            <button className='sec-btn' disabled={load} >{load ? "loading..." : "login"}</button>
+
+            
           </div>
         </form>
       </div>

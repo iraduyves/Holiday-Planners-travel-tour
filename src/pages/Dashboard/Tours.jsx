@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form';
 // eslint-disable-next-line react/prop-types
 function EditModal({ selectedItem, navigatefalse }) {
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const onSubmit = async (body) => {
 
         try {
@@ -16,7 +18,13 @@ function EditModal({ selectedItem, navigatefalse }) {
                 console.log({ data });
             }
         } catch (error) {
-            console.error({ error })
+            if (error.response && error.response.data) {
+                const errorResponse = error.response.data;
+                const errorMessage = errorResponse.message;
+        
+                // Update the error message in the state
+                setErrorMessage(errorMessage);
+            }
         }
 
     };
@@ -89,8 +97,7 @@ function EditModal({ selectedItem, navigatefalse }) {
 
                                     </span>
                                 </div>
-
-
+                                {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
                                 <div className="colrow12">
                                     <input type="submit" className="sec-btn find-now-btn" value="edit" />
                                     {/* <button className="sec-btn find-now-btn"><span>Edit</span></button> */}
@@ -107,6 +114,10 @@ function EditModal({ selectedItem, navigatefalse }) {
 }
 
 function Tour() {
+  
+    const [errorMessage, setErrorMessage] = useState('');
+
+
     const { register, handleSubmit, formState: { errors }} = useForm();
 
     const { Tour, setTour } = useContext(TourContent)
@@ -135,7 +146,11 @@ function Tour() {
         formData.append('backdropImage', data.image[0]); // Assuming 'image' is the name of your input field.
       
         try {
-          const response = await axios.post('/api/v1/tour/create', formData);
+          const response = await axios.post('/api/v1/tour/create', formData,{
+            headers:{
+                "Content-Type":"multipart/form-data"
+            }
+          });
       
           if (response.data) {
             console.log('Tour created:', response.data);
@@ -143,22 +158,37 @@ function Tour() {
           }
         } catch (error) {
           console.error('Error creating tour:', error);
-          // You can add code here to handle the error.
+          if (error.response && error.response.data) {
+            const errorResponse = error.response.data;
+            const errorMessage = errorResponse.message;
+    
+            // Update the error message in the state
+            setErrorMessage(errorMessage);
+        }
         }
       };
       
 
     const deletetour = async (id) => {
-        try {
-            const { data } = await axios.delete('/api/v1/tour/delete/' + id)
-            if (data) {
-
-                console.log({ data });
+               const userConfirmed = window.confirm('Are you sure you want to delete?');
+        if (userConfirmed){
+            try {
+                const { data } = await axios.delete('/api/v1/tour/delete/' + id)
+                if (data) {
+                    
+                    console.log({ data });
+                }
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    const errorResponse = error.response.data;
+                    const errorMessage = errorResponse.message;
+            
+                    // Update the error message in the state
+                    setErrorMessage(errorMessage);
+                }
             }
-        } catch (error) {
-            console.error({ error })
+            
         }
-
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -195,7 +225,13 @@ function Tour() {
                 setTour(data)
             }
         } catch (error) {
-            console.error({ error })
+            if (error.response && error.response.data) {
+                const errorResponse = error.response.data;
+                const errorMessage = errorResponse.message;
+        
+                // Update the error message in the state
+                setErrorMessage(errorMessage);
+            }
         }
     }, [setTour]);
 
@@ -263,7 +299,7 @@ function Tour() {
                                                 {errors.image && <p style={{ color: 'red', fontSize: 'small' }} >Tour Background  is required and must be a Full name</p>}
                                             </span>
                                         </div>
-
+                                        {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
 
                                         <div className="colrow12">
                                             <button className="sec-btn find-now-btn" type='submit'><span>Edit</span></button>

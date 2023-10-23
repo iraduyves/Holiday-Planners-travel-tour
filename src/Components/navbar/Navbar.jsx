@@ -1,16 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import logo from '/logo.png'
 import logowhite from '/logo-icon-white.svg'
 import '../navbar/navbar.css'
-import { faCircleChevronDown, faCircleXmark, faEnvelope, faMagnifyingGlass, faPhone } from '@fortawesome/free-solid-svg-icons'
+import {  faCircleXmark, faEnvelope, faMagnifyingGlass, faPhone } from '@fortawesome/free-solid-svg-icons'
 
 import { FaFacebookF } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import MenuBar from './manuBar'
+import { UserContent } from '../../context/user'
 
 const Navbar = () => {
+    const logout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('access_token')
+        window.location.assign('/login')
+    }
+    const { user } = useContext(UserContent)
+
     const [isStatic, setIsStatic] = useState(false)
 
     const scrolled = useCallback(() => {
@@ -97,10 +105,16 @@ const Navbar = () => {
                                             </div>
                                         </div>
                                     </div>
+                                  
                                 </div>
                                 <div className="main-navigation">
                                     <MenuBar />
 
+
+                                </div>
+                                <div className="row-right">
+                                  {user&&   <p style={{fontSize:'large',color:'#C29D59'}} className=''>{user.email}</p>}
+                                  <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button>
 
                                 </div>
                             </div>
@@ -113,3 +127,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
