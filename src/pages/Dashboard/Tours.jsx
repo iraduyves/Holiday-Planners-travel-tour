@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 function EditModal({ selectedItem, navigatefalse }) {
 
     const [errorMessage, setErrorMessage] = useState('');
+  
 
     const onSubmit = async (body) => {
 
@@ -144,6 +145,7 @@ function Tour() {
         formData.append('users', data.users);
         formData.append('duration', data.duration);
         formData.append('backdropImage', data.image[0]); // Assuming 'image' is the name of your input field.
+        formData.append('Gallery', data.gallary[0]); // Assuming 'image' is the name of your input field.
       
         try {
           const response = await axios.post('/api/v1/tour/create', formData,{
@@ -297,6 +299,13 @@ function Tour() {
                                                 <span className="icon"><div className="i"><FaImages /></div></span>
                                                 <input type="file" name="image" accept="image/*" className="form-input"  {...register("image", { required: true })} />
                                                 {errors.image && <p style={{ color: 'red', fontSize: 'small' }} >Tour Background  is required and must be a Full name</p>}
+                                            </span>
+                                        </div>
+                                        <div className="colrow12">
+                                            <span className="form-control-span">
+                                                <span className="icon"><div className="i"><FaImages /></div></span>
+                                                <input type="file" name="gallary" accept="image/*" className="form-input"  {...register("gallary", { required: true })} />
+                                                {errors.gallary && <p style={{ color: 'red', fontSize: 'small' }} >Tour Background  is required and must be a Full name</p>}
                                             </span>
                                         </div>
                                         {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}

@@ -6,17 +6,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from '../config/axios';
 import { useContext, useState } from 'react';
 import { UserContent } from '../context/user';
+import PropTypes from 'prop-types';
 
 
 
 
 
-const Login = () => {
+
+const Login = ({isLoggedIn,setIsLoggedIn}) => {
    const [profileuser ,Setprofileuser]  =useState([""])
+   
+
 
   // const { register, handleSubmit, formState: { errors } } = useForm();
   const [errorMessage, setErrorMessage] = useState('');
-  const [dataMessage, setDataMessage] = useState('');
+  // const [dataMessage, setDataMessage] = useState('');
 
   const { setUser } = useContext(UserContent)
   const navigate = useNavigate()
@@ -31,8 +35,10 @@ const Login = () => {
         localStorage.setItem("access_token", data.access_token)
         console.log({ data });
         setUser(data.user)
-        Setprofileuser(data.user)
-        reset();
+
+        // reset();
+        setIsLoggedIn(true);
+        // console.log({isLoggedIn});
         (data.user.role == 'admin') ? navigate('/dashboard') : navigate('/')
         
         // const dataResponse = data.response.data;
@@ -67,7 +73,7 @@ const Login = () => {
           </div>
           <div>{errors.password && <p style={{ color: 'red', fontSize: 'large' }}>Password is required</p>}</div>
           <div>
-           {dataMessage&& <div><p  style={{ color: 'red', fontSize: 'large' }}>{dataMessage}</p></div>}
+           {/* {dataMessage&& <div><p  style={{ color: 'red', fontSize: 'large' }}>{dataMessage}</p></div>} */}
            {errorMessage&& <div><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
 
             <Link to="/signup"> <span style={{ color: 'blue' }}>forgot Password?</span></Link>
@@ -84,6 +90,11 @@ const Login = () => {
     </div>
   )
 }
-
+Login.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
+};
+Login.propTypes = {
+  isLoggedIn: PropTypes.func.isRequired,
+};
 export default Login
 

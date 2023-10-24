@@ -61,13 +61,14 @@ function Layout() {
 }
 
 export function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
 
     <Routes>
       <Route path='/' element={<Layout />}>
-        <Route index element={<Homepage />} />
-        <Route path='/login' element={<Login />} />
+        <Route index element={<Homepage />} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
+        <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn}/>}  isLoggedIn={isLoggedIn}/>
         <Route path='/signup' element={<Signup />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<ConctactUs />} />

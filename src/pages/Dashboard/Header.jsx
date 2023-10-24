@@ -1,4 +1,4 @@
-import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
+import { BsFillBellFill, BsFillEnvelopeFill,  BsSearch, BsJustify }
   from 'react-icons/bs'
 import './Dashboard.jsx'
 import PropTypes from 'prop-types';

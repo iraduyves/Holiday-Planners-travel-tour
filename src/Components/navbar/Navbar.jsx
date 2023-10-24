@@ -10,12 +10,15 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import MenuBar from './manuBar'
 import { UserContent } from '../../context/user'
+import PropTypes from 'prop-types';
 
-const Navbar = () => {
+
+const Navbar = ({isLoggedIn,setIsLoggedIn}) => {
     const logout = (e) => {
         e.preventDefault()
         localStorage.removeItem('access_token')
-        window.location.assign('/login')
+       
+        window.location.href = '/login'; 
     }
     const { user } = useContext(UserContent)
 
@@ -109,12 +112,10 @@ const Navbar = () => {
                                 </div>
                                 <div className="main-navigation">
                                     <MenuBar />
-
-
                                 </div>
                                 <div className="row-right">
                                   {user&&   <p style={{fontSize:'large',color:'#C29D59'}} className=''>{user.email}</p>}
-                                  <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button>
+                                {localStorage.getItem("access_token") && ( <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button>)}
 
                                 </div>
                             </div>
@@ -125,7 +126,12 @@ const Navbar = () => {
         </header>
     )
 }
-
+Navbar.propTypes = {
+    setIsLoggedIn: PropTypes.func.isRequired,
+  };
+Navbar.propTypes = {
+    isLoggedIn: PropTypes.func.isRequired,
+  };
 export default Navbar
 
 
