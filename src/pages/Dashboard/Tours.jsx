@@ -7,30 +7,42 @@ import axios from '../../config/axios';
 import { useForm } from 'react-hook-form';
 // eslint-disable-next-line react/prop-types
 function EditModal({ selectedItem, navigatefalse }) {
-
-    const [errorMessage, setErrorMessage] = useState('');
-  
-
-    const onSubmit = async (body) => {
+    const onSubmit = async (data) => {
+        const formData = new FormData();
+        console.log(data);
+        formData.append('name', data.name);
+        formData.append('Title', data.title);
+        formData.append('description', data.description);
+        formData.append('users', data.users);
+        formData.append('duration', data.duration);
+        formData.append('backdropImage', data.image[0]); 
+        formData.append('Gallery', data.gallery[0]); 
 
         try {
-            const { data } = await axios.put('/api/v1/tour/update/' + selectedItem._id, {}, { params: body })
-            if (data) {
-                console.log({ data });
+            // const { data } = await axios.put('/api/v1/tour/update/' + selectedItem._id, {}, { params: body })
+            // const response = await axios.put('/api/v1/tour/update'+ selectedItem._id, formData,{
+            const response = await axios.put(`/api/v1/tour/update?fieldName=_id&value=${selectedItem._id}`,formData,{
+            headers:{
+                "Content-Type":"multipart/form-data"
             }
+          });
+      
+          if (response.data) {
+            console.log('Tour created:', response.data);
+          }
         } catch (error) {
-            if (error.response && error.response.data) {
-                const errorResponse = error.response.data;
-                const errorMessage = errorResponse.message;
-        
-                // Update the error message in the state
-                setErrorMessage(errorMessage);
-            }
+          console.error('Error creating tour:', error);
+          if (error.response && error.response.data) {
+            // const errorResponse = error.response.data;
+            // const errorMessage = errorResponse.message;
+    
+            // Update the error message in the state
+            // setErrorMessage(errorMessage);
         }
+        }
+      };
 
-    };
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     return (
         <div className="row-right">
             <div className="right-side">
@@ -98,7 +110,15 @@ function EditModal({ selectedItem, navigatefalse }) {
 
                                     </span>
                                 </div>
-                                {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
+                                <div className="colrow12">
+                                    <span className="form-control-span">
+                                        {/* <span className="icon"><div className="i"><FaImages/></div></span> */}
+                                        <input id="image" type="file" name="gallery" accept="image/*" className="form-input" {...register("gallery", { required: true })} />
+                                        {errors.gallery && <p style={{ color: 'red', fontSize: 'small' }} >Image is required and must be valid</p>}
+
+                                    </span>
+                                </div>
+                                {/* {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>} */}
                                 <div className="colrow12">
                                     <input type="submit" className="sec-btn find-now-btn" value="edit" />
                                     {/* <button className="sec-btn find-now-btn"><span>Edit</span></button> */}
@@ -121,7 +141,7 @@ function Tour() {
 
     const { register, handleSubmit, formState: { errors }} = useForm();
 
-    const { Tour, setTour } = useContext(TourContent)
+    // const { Tour, setTour } = useContext(TourContent)
     // const onSubmit = async (body) => {
     //     //   const data = new FormData();
 
@@ -219,29 +239,29 @@ function Tour() {
     }
 
 
-    const FetchData = useCallback(async () => {
-        try {
-            const { data } = await axios.get('/api/v1/tour/')
-            if (data) {
-                console.log({ data });
-                setTour(data)
-            }
-        } catch (error) {
-            if (error.response && error.response.data) {
-                const errorResponse = error.response.data;
-                const errorMessage = errorResponse.message;
+    // const FetchData = useCallback(async () => {
+    //     try {
+    //         const { data } = await axios.get('/api/v1/tour/')
+    //         if (data) {
+    //             console.log({ data });
+    //             setTour(data)
+    //         }
+    //     } catch (error) {
+    //         if (error.response && error.response.data) {
+    //             const errorResponse = error.response.data;
+    //             const errorMessage = errorResponse.message;
         
-                // Update the error message in the state
-                setErrorMessage(errorMessage);
-            }
-        }
-    }, [setTour]);
+    //             // Update the error message in the state
+    //             setErrorMessage(errorMessage);
+    //         }
+    //     }
+    // }, [setTour]);
 
-    useEffect(() => {
-        FetchData()
-    }, [FetchData])
+    // useEffect(() => {
+    //     FetchData()
+    // }, [FetchData])
 
-
+   const {tours}=useContext(TourContent)
     return (
 
         <>
@@ -323,7 +343,7 @@ function Tour() {
                 </div>
             )}
             <div className='row1'>
-                {Tour.map((item, index) => (
+                {tours.map((item, index) => (
                     <div className="colrow61" key={index}>
                         <div className="tour-box1">
                             <div className="tour-box-image1 back-image1" style={{ backgroundImage: `url("${item.backdropImage}")` }}><span className="discount-label">15%</span></div>
@@ -366,3 +386,4 @@ function Tour() {
 }
 
 export default Tour
+nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn

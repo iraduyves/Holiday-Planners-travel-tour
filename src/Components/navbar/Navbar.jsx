@@ -13,14 +13,8 @@ import { UserContent } from '../../context/user'
 import PropTypes from 'prop-types';
 
 
-const Navbar = ({isLoggedIn,setIsLoggedIn}) => {
-    const logout = (e) => {
-        e.preventDefault()
-        localStorage.removeItem('access_token')
-       
-        window.location.href = '/login'; 
-    }
-    const { user } = useContext(UserContent)
+const Navbar = () => {
+  
 
     const [isStatic, setIsStatic] = useState(false)
 
@@ -114,8 +108,8 @@ const Navbar = ({isLoggedIn,setIsLoggedIn}) => {
                                     <MenuBar />
                                 </div>
                                 <div className="row-right">
-                                  {user&&   <p style={{fontSize:'large',color:'#C29D59'}} className=''>{user.email}</p>}
-                                {localStorage.getItem("access_token") && ( <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button>)}
+                                  {/* {loggedUser&&   <p style={{fontSize:'large',color:'#C29D59'}} className=''>{loggedUser.email}</p>}
+                                {localStorage.getItem("access_token") && ( <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button>)} */}
 
                                 </div>
                             </div>

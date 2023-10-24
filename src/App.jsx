@@ -26,6 +26,8 @@ import Users from './pages/Dashboard/Users'
 import About from './pages/About'
 import { useContext } from 'react'
 import { UserContent } from './context/user'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// import AppProvider from './context/AppProvider'
 
 function Layout1() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
@@ -62,29 +64,31 @@ function Layout() {
 
 export function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
 
   return (
+    
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Homepage />} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+          <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} isLoggedIn={isLoggedIn} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<ConctactUs />} />
+          <Route path='/tour' element={<Tour />} />
+          <Route path='/tour/:name' element={<SingleTourPage />} />
+          <Route path='/amazingtour' element={<AmazingOffer />} />
+          <Route path='/testimonial' element={<Testimonial />} />
+          <Route path="*" element={<div>NOt Found</div>} />
+        </Route>
+        <Route path='/dashboard' element={<Layout1 />} >
+          <Route index element={<Home />} />
+          <Route path='/dashboard/tours' element={<Tours />} />
+          <Route path='/dashboard/bookings' element={<Bookings />} />
+          <Route path='/dashboard/users' element={<Users />} />
+        </Route>
+      </Routes>
 
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<Homepage />} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
-        <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn}/>}  isLoggedIn={isLoggedIn}/>
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<ConctactUs />} />
-        <Route path='/tour' element={<Tour />} />
-        <Route path='/tour/:name' element={<SingleTourPage />} />
-        <Route path='/amazingtour' element={<AmazingOffer />} />
-        <Route path='/testimonial' element={<Testimonial />} />
-        <Route path="*" element={<div>NOt Found</div>} />
-      </Route>
-      <Route path='/dashboard' element={<Layout1/>} >
-        <Route index element={<Home/>} />
-        <Route path='/dashboard/tours' element={<Tours/>} />
-        <Route path='/dashboard/bookings' element={<Bookings/>} />
-        <Route path='/dashboard/users' element={<Users/>} />
-      </Route>
-    </Routes>
   )
 }
 

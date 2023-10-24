@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import {  FaEdit, FaEnvelope, FaLock, FaPenAlt, FaPhone, FaTrashAlt, } from 'react-icons/fa'
+import { FaEdit, FaEnvelope, FaLock, FaPenAlt, FaPhone, FaTrashAlt, } from 'react-icons/fa'
 import axios from '../../config/axios';
 import Select from '../../Components/input/select';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -81,26 +81,25 @@ function Users() {
     const [users, setUsers] = useState([])
 
 
-    const FetchData = async () => {
-        try {
-            const { data } = await axios.get('/api/v1/auth/users')
-            if (data) {
-                console.log({ data });
-                setUsers(data)
-            }
-        } catch (error) {
-            console.error({ error })
-        }
-    };
-    // /api/v1/auth/users/update/:email 
-    useEffect(() => {
-        FetchData()
-    }, [])
+    // const FetchData = async () => {
+    //     try {
+    //         const { data } = await axios.get('/api/v1/auth/users')
+    //         if (data) {
+    //             console.log({ data });
+    //             setUsers(data)
+    //         }
+    //     } catch (error) {
+    //         console.error({ error })
+    //     }
+    // };
+    // useEffect(() => {
+    //     FetchData()
+    // }, [])
 
     const deleteUser = async (email) => {
         // const userConfirmed = window.confirm('Are you sure you want to delete?');
-//         if (userConfirmed){
-// }
+        //         if (userConfirmed){
+        // }
         try {
             const { data } = await axios.delete('/api/v1/auth/users/delete/' + email)
             if (data) {
@@ -109,11 +108,11 @@ function Users() {
             }
         } catch (error) {
             console.error({ error })
-            window.alert({error})
+            window.alert({ error })
         }
 
-}
-        const UpdateUser = async (email) => {
+    }
+    const UpdateUser = async (email) => {
 
         try {
             const { data } = await axios.delete('/api/v1/auth/users/update/:email ' + email)
@@ -166,7 +165,7 @@ function Users() {
 
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                            <Select name='roles' options={['admin', 'user']} icon={<><FontAwesomeIcon icon={faUser} className='faicon' /></>} className='faicon' />
+                                                <Select name='roles' options={['admin', 'user']} icon={<><FontAwesomeIcon icon={faUser} className='faicon' /></>} className='faicon' />
 
                                             </span>
                                         </div>
@@ -222,8 +221,8 @@ function Users() {
 
                                         <div className="colrow12">
                                             <span className="form-control-span">
-                                                 <Select name='roles' options={['admin', 'user']} icon={<><FontAwesomeIcon icon={faUser} className='faicon' /></>} className='faicon' />
-                                                
+                                                <Select name='roles' options={['admin', 'user']} icon={<><FontAwesomeIcon icon={faUser} className='faicon' /></>} className='faicon' />
+
 
                                             </span>
                                         </div>
@@ -279,14 +278,14 @@ function Users() {
                                     </td>
                                     <td>
 
-                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash'  onClick={() => deleteUser(item.email)}/></button>
+                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash' onClick={() => deleteUser(item.email)} /></button>
                                     </td>
                                 </tr>
 
                             </tbody>
                         ))}
                     </table>
-                        <button className="sec-btn" style={{ cursor: 'pointer' }} onClick={navigateAdd}>ADD NEW USER</button>
+                    <button className="sec-btn" style={{ cursor: 'pointer' }} onClick={navigateAdd}>ADD NEW USER</button>
                 </div>
             </div>
 

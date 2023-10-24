@@ -10,12 +10,15 @@ import { UserContent } from '../../context/user.jsx';
 
 function Header({ OpenSidebar }) {
   const navigate = useNavigate()
-  const { user } = useContext(UserContent)
 
-  useLayoutEffect(() => {
-    console.log({ user })
-    if (!localStorage.getItem('access_token') || !user || user.role !== 'admin') navigate('/login')
-  }, [navigate, user])
+  let userr=JSON.parse(localStorage.getItem("isLogin"));
+  let token =userr?.access_token;
+  let userData=userr?.user;
+
+  useLayoutEffect(()=>{
+    console.log(userData?.role);
+    if(!localStorage?.getItem('isLogin') || userData?.role !=='admin') window.location.href = "/login" 
+  })
 
   return (
     <header className='header'>
@@ -31,14 +34,14 @@ function Header({ OpenSidebar }) {
         {/* <BsPersonCircle className='icon' /> */}
       </div>
 
-      {user &&
+      {/* {loggedUser && */}
         <div style={{display:'flex',justifyContent:'space-between'}}>
-          <h2 style={{ fontSize: 'x-large', color: '#9E9EA4',cursor:'pointer' }}>{user.email}</h2>
+          <h2 style={{ fontSize: 'x-large', color: '#9E9EA4',cursor:'pointer' }}> {userData?.email}</h2>
           <div className="img-box-small">
             <img src="https://i.pinimg.com/550x/d3/91/41/d391417c2dc4c794aca41da6080bed7a.jpg" alt="" style={{cursor:'pointer' }}/>
           </div>
         </div>
-      }
+      {/* } */}
     </header>
   )
 }

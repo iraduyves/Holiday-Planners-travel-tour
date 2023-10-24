@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
     const logout = (e) => {
         e.preventDefault()
-        localStorage.removeItem('access_token')
+        localStorage.removeItem('isLogin')
         window.location.assign('/login')
     }
     return (

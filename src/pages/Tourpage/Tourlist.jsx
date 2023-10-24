@@ -79,25 +79,10 @@ export const tourlistMock = [
    
    ];
 
+
    
    const Tourlist = () => {
-    const { Tour, setTour } = useContext(TourContent)
- 
-    const FetchData = useCallback(async () => {
-        try {
-            const { data } = await axios.get('/api/v1/tour/')
-            if (data) {
-                console.log({ data });
-                setTour(data)
-            }
-        } catch (error) {
-            console.error({ error })
-        }
-    }, [setTour]);
- 
-    useEffect(() => {
-        FetchData()
-    }, [FetchData])
+    const { tours} = useContext(TourContent)
 
     return (
         <div className="main-tour-list pb-70">
@@ -109,7 +94,7 @@ export const tourlistMock = [
                             <div className="tour-filter-result">
                                 <div className="row">
 
-                                    {Tour.map((item, index) => (
+                                    {tours?.map((item, index) => (
                                         <div className="colrow6" key={index}>
                                             <div className="tour-box">
                                                 <div className="tour-box-image back-image" style={{ backgroundImage: `url("${item.backdropImage}")` }}><span className="discount-label">15%</span></div>

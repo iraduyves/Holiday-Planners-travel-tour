@@ -1,17 +1,29 @@
-import { createContext, useState } from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
+import axios from '../config/axios';
+import { useQuery } from '@tanstack/react-query';
 
-const context = {
-    Tour: [],
-    setTour: () => { }
-}
-export const TourContent = createContext(context)
+export const TourContent = createContext()
 
+
+// export const TourContent = createContext(context)
+//    const context = {
+//     Tour: [],
+//     setTour: () => { }
+// }
 // eslint-disable-next-line react/prop-types
 export default function TourProvider({ children }) {
-    const [Tour, setTour] = useState(context.Tour)
+   
+    const { data: tours } = useQuery({
+        queryKey: ["tours"],
+        queryFn: async () => {
+          const res = await axios.get('/api/v1/tour/');
+          return res.data;
+        },
+      });
+    
 
     return (
-        <TourContent.Provider value={{ Tour, setTour }}>
+        <TourContent.Provider value={{tours}}>
             {children}
         </TourContent.Provider>
     )
