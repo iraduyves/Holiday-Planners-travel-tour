@@ -21,6 +21,7 @@
     "apexcharts": "^3.43.0",
     "axios": "^1.5.1",
     "node-sass": "^9.0.0",
+    "notiflix": "^3.2.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",

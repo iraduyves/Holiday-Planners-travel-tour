@@ -1,10 +1,13 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FaEdit, FaEnvelope, FaLock, FaPenAlt, FaPhone, FaTrashAlt, } from 'react-icons/fa'
 import axios from '../../config/axios';
 import Select from '../../Components/input/select';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { UserContent } from '../../context/user';
+import Notiflix, { Notify } from 'notiflix';
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 
 
 
@@ -78,12 +81,18 @@ function Users() {
     const navigatefalse = () => {
         setIsModalOpen(false)
     }
-    const [users, setUsers] = useState([])
+    const [user, setUsers] = useState([])
 
-
+    // let userr=JSON.parse(localStorage.getItem("isLogin"));
+    // let token =userr.access_token;
+    // let userData=userr.user;
     // const FetchData = async () => {
     //     try {
-    //         const { data } = await axios.get('/api/v1/auth/users')
+    //         const { data } = await axios.get('/api/v1/auth/users',{
+    //             headers: {
+    //                 Authorization: "Bearer" + token,
+    //             }
+    //         })
     //         if (data) {
     //             console.log({ data });
     //             setUsers(data)
@@ -95,23 +104,50 @@ function Users() {
     // useEffect(() => {
     //     FetchData()
     // }, [])
-
-    const deleteUser = async (email) => {
-        // const userConfirmed = window.confirm('Are you sure you want to delete?');
-        //         if (userConfirmed){
-        // }
-        try {
-            const { data } = await axios.delete('/api/v1/auth/users/delete/' + email)
-            if (data) {
-
-                console.log({ data });
-            }
-        } catch (error) {
-            console.error({ error })
-            window.alert({ error })
-        }
-
+    let userr=JSON.parse(localStorage.getItem("isLogin"));
+    let token =userr.access_token;
+    const [load,setLoad]=useState(false)
+    const deleteUser = async (id) => {
+        
+        Confirm.show(
+            'Delete Confim',
+            'Do u want to Delete this User?',
+            'Yes',
+            'No',
+            async() => {  
+                setLoad(()=>true)
+                try {
+                    const { data } = await axios.delete('/api/v1/auth/users/delete/'+id,{
+                        headers:{
+                            Authorization:"Bearer "+token,
+                        },
+                    })
+                    if (data) {
+                        Notify.success('User successfully deleted');
+                        console.log('hy');
+                    }
+                } catch (error) {
+                    if (error.response && error.response.data) {
+                        const errorResponse = error.response.data;
+                        const errorMessage = errorResponse.message;
+                        Notify.failure(errorMessage);
+                      }
+                }
+                setLoad(() => false)
+            },
+            () => {
+             
+            },
+            {
+            },
+            );
     }
+    if(load){
+        Notiflix.Loading.pulse();
+      }
+      else{
+        Notiflix.Loading.remove();
+      }
     const UpdateUser = async (email) => {
 
         try {
@@ -125,6 +161,11 @@ function Users() {
         }
 
     }
+
+    const { users } = useContext(UserContent)
+    { users && console.log({ users }); }
+
+
 
     return (
         <>
@@ -253,7 +294,7 @@ function Users() {
                             <td>Name</td>
                             <td>Emails</td>
                             <td>Phone</td>
-                            <td>password</td>
+                           
                             <td>Role</td>
                             <td>Edit</td>
                             <td>Delete</td>
@@ -271,14 +312,14 @@ function Users() {
                                     <td>{item.fullName}</td>
                                     <td>{item.email}</td>
                                     <td>{item.phone}</td>
-                                    <td>{item.password}</td>
+                                    {/* <td>{item.password}</td> */}
                                     <td>{item.role}</td>
                                     <td>
                                         <button type="submit" className="i" onClick={navigate} style={{ cursor: 'pointer' }}><FaEdit className='fa-edit' /></button>
                                     </td>
                                     <td>
 
-                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash' onClick={() => deleteUser(item.email)} /></button>
+                                        <button type='submit' className="i" style={{ cursor: 'pointer' }}><FaTrashAlt className='fa-trash' onClick={() => deleteUser(item._id)} /></button>
                                     </td>
                                 </tr>
 

@@ -23,12 +23,12 @@ import { TourContent } from '../../context/Tour';
 
 
 const SingleTourPage = () => {
-    const { Tour, setTour } = useContext(TourContent)
-    //    console.log({tourlist});
+    const { tours} = useContext(TourContent)
+
     const { name } = useParams();
-    console.log(Tour,name);
+    console.log(tours,name);
     // const tour = tourlist[name];
-    const single = Tour.find((item) => item._id  == name);
+    const single = tours.find((item) => item._id  == name);
     // console.log(single);
     if (!single) {
         return <div>Sorry, this tour does not exist.</div>;
@@ -232,22 +232,22 @@ return (
                                                         <div className="slick-list ">
                                                             <div className="slick-track" >
                                                                 <SwiperSlide>
-                                                                    <div className="col-lg-4 p-0 slick-slide slick-cloned"  >
+                                                                    <div className="row-left p-0 slick-slide slick-cloned"  >
                                                                         <div className="tour-gallery-slide-image back-image" style={{ backgroundImage: 'url("https://html.geekcodelab.com/holiday-planners/assets/images/tour-gallery-slide-image1.jpg")' }}></div>
                                                                     </div>
                                                                 </SwiperSlide>
                                                                 <SwiperSlide>
-                                                                    <div className="col-lg-4 p-0 slick-slide slick-cloned" >
+                                                                    <div className="row-left p-0 slick-slide slick-cloned" >
                                                                         <div className="tour-gallery-slide-image back-image" style={{ backgroundImage: 'url("https://html.geekcodelab.com/holiday-planners/assets/images/tour-gallery-slide-image2.jpg")' }} ></div>
                                                                     </div>
                                                                 </SwiperSlide>
                                                                 <SwiperSlide>
-                                                                    <div className="col-lg-4 p-0 slick-slide" >
+                                                                    <div className="row-left p-0 slick-slide" >
                                                                         <div className="tour-gallery-slide-image back-image" style={{ backgroundImage: 'url("https://html.geekcodelab.com/holiday-planners/assets/images/tour-gallery-slide-image3.jpg")' }}></div>
                                                                     </div>
                                                                 </SwiperSlide>
                                                                 <SwiperSlide>
-                                                                    <div className="col-lg-4 p-0 slick-slide" >
+                                                                    <div className="row-left p-0 slick-slide" >
                                                                         <div className="tour-gallery-slide-image back-image" style={{ backgroundImage: 'url("https://html.geekcodelab.com/holiday-planners/assets/images/tour-gallery-slide-image4.jpg")' }}></div>
                                                                     </div>
                                                                 </SwiperSlide>

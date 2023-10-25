@@ -1,8 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { createContext, useState } from 'react'
+import { createContext} from 'react'
 import axios from '../config/axios'
-import { Navigate } from 'react-router-dom'
-// import { Navigate } from 'react-router-dom'
+import { Notify } from 'notiflix'
 
 const context = {
     user: null,
@@ -12,10 +11,6 @@ export const UserContent = createContext(context)
 
 // eslint-disable-next-line react/prop-types
 export default function UserProvider({ children }) {
-    const [user, setUser] = useState(context.user)
-
-
-
     /* Login  */
 
     const loginMutation = useMutation({
@@ -23,66 +18,49 @@ export default function UserProvider({ children }) {
             const res = await axios.post('/api/v1/auth/login', data);
             return res.data;
         },
-        onError: (error) => {
-            console.log(error.response.data.message);
+        onError: () => {
+            // console.log(error.response.data.message);
+            Notify.failure('Incorrect email or password');
         },
         onSuccess: (data) => {
-            console.log(data); 
+            console.log(data);
             localStorage.setItem("isLogin", JSON.stringify(data));
-            let userr=JSON.parse(localStorage.getItem("isLogin"));
-            let token =userr.access_token;
-            let userData=userr.user;
-            // window.location.href = "/dashboard" 
-            (userData.role !== 'admin') ? window.location.href = "/" : window.location.href = "/dashboard"
+            let userr = JSON.parse(localStorage.getItem("isLogin"));
+            let userData = userr.user; 
+            Notify.success('Login success');
+            setTimeout(() => {
+                (userData.role !== 'admin') ? window.location.href = "/" : window.location.href = "/dashboard"
+            }, 3000);
 
         },
     });
-
+    let userr = JSON.parse(localStorage.getItem("isLogin"));
+    let token = userr?.access_token;
+    console.log(token);
     /* Get All Users*/
-    // const { data: users } = useQuery({
-    //     queryKey: ["users"],
-    //     queryFn: async () => {
-    //         const res = await axios.get('/api/v1/auth/users');
-    //         return res.data;
-    //     },
-    //     onError: (error) => {
-    //         console.log(error.response.data.message);
-    //     },
-    //     onSuccess: (data) => {
-    //         console.log(data);
-    //     },
-    // });
+    const { data: users } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const res = await axios.get('/api/v1/auth/users', {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            })
+            return res.data;
+        },
+        onError: (error) => {
+            console.log(error.response.data.message);
+            Notify.failure(error.res.data.message);
 
-    /* Get Logged In User*/
-    // let userr=JSON.parse(localStorage.getItem("isLogin"));
-    // let token =userr.access_token;
-    // let userData=userr.user;
+        },
+        onSuccess: (data) => {
 
-    // console.log(userData.role);
-    // const {data:loggedUser} = useQuery({
-    //     queryKey: ["user"],
-    //     queryFn: async () => {
-    //         const res = await axios.get(`auth/users/getOne?fieldName=email&value=${userData.email}`,
-    //             {
-    //                 headers: {
-    //                     Authorization: "Bearer" + token,
-                           
-    //                 },
-    //             }
-    //         );
-    //         return res.data;
-    //     },
+            console.log(data);
+        },
+    });
 
-    //     onError: (error) => {
-    //         console.log(error.response.data.message);
-    //     },
-    //     onSuccess: (data) => {
-    //         console.log(data);
-    //         console.log(loggedUser.data);
-    //     },
-    // })
     return (
-        <UserContent.Provider value={{ user, setUser,loginMutation }}>
+        <UserContent.Provider value={{ loginMutation, users }}>
             {children}
         </UserContent.Provider>
     )

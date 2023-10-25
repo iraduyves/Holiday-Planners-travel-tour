@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import axios from '../config/axios';
 import Select from '../Components/input/select';
 import { useState } from 'react';
+import Notiflix, { Notify } from 'notiflix';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const Signup = () => {
 
@@ -14,6 +16,8 @@ const Signup = () => {
   const [load, setLoad] = useState(false)
   const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
 
+  
+
   const onSubmit = async (body) => {
     setLoad(() => true)
     try {
@@ -21,18 +25,23 @@ const Signup = () => {
       if (data) {
         reset()
         navigate('/login')
+        Notify.success('You are Registered Successfully');
       }
     } catch (error) {
       if (error.response && error.response.data) {
         const errorResponse = error.response.data;
         const errorMessage = errorResponse.message;
-
-        // Update the error message in the state
-        setErrorMessage(errorMessage);
-    }
+        Notify.failure(errorMessage);
+      }
     }
     setLoad(() => false)
   };
+  if(load){
+    Notiflix.Loading.pulse();
+  }
+  else{
+    Notiflix.Loading.remove();
+  }
 
 
   return (
@@ -64,9 +73,8 @@ const Signup = () => {
             <Input type='password' icon={<><FontAwesomeIcon icon={faLock} className='faicon' /></>} name='repassword' placeholder='retype password' register={register("repassword", { required: true, validate: (val) => { if (watch('password') != val) { return "Password Does not Match" } } })} />
             {errors.repassword && <p style={{ color: 'red', fontSize: 'small' }} >Password Does not Match</p>}
           </div>
-          {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
           <div>
-            <button className='sec-btn' disabled={load}>{load ? "loading..." : "Signup"}</button>
+            <button className='sec-btn' disabled={load}>Register</button>
           </div>
 
           <Link to="/login"> <span style={{ color: 'blue' }}>  Login</span></Link>

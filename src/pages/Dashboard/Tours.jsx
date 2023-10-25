@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useCallback, useContext, useEffect, useState } from 'react';
-// import { tourlist } from '../Tourpage/Tourlist'
+import { useContext, useState } from 'react';
 import { FaClock, FaEdit, FaImages, FaMoneyCheckAlt, FaPenAlt, FaUserEdit, } from 'react-icons/fa';
 import { TourContent } from '../../context/Tour';
 import axios from '../../config/axios';
 import { useForm } from 'react-hook-form';
+import Notiflix, { Confirm, Notify } from 'notiflix';
 // eslint-disable-next-line react/prop-types
 function EditModal({ selectedItem, navigatefalse }) {
     const onSubmit = async (data) => {
@@ -15,32 +15,27 @@ function EditModal({ selectedItem, navigatefalse }) {
         formData.append('description', data.description);
         formData.append('users', data.users);
         formData.append('duration', data.duration);
-        formData.append('backdropImage', data.image[0]); 
-        formData.append('Gallery', data.gallery[0]); 
+        formData.append('backdropImage', data.image[0]);
+        formData.append('Gallery', data.gallery[0]);
 
         try {
-            // const { data } = await axios.put('/api/v1/tour/update/' + selectedItem._id, {}, { params: body })
-            // const response = await axios.put('/api/v1/tour/update'+ selectedItem._id, formData,{
-            const response = await axios.put(`/api/v1/tour/update?fieldName=_id&value=${selectedItem._id}`,formData,{
-            headers:{
-                "Content-Type":"multipart/form-data"
+            const response = await axios.put(`/api/v1/tour/update/` + selectedItem._id, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            });
+
+            if (response.data) {
+                Notify.failure(response.data);
             }
-          });
-      
-          if (response.data) {
-            console.log('Tour created:', response.data);
-          }
         } catch (error) {
-          console.error('Error creating tour:', error);
-          if (error.response && error.response.data) {
-            // const errorResponse = error.response.data;
-            // const errorMessage = errorResponse.message;
-    
-            // Update the error message in the state
-            // setErrorMessage(errorMessage);
+            if (error.response && error.response.data) {
+                const errorResponse = error.response.data;
+                const errorMessage = errorResponse.message;
+                Notify.failure('Error in Updating a tour :', errorMessage);
+            }
         }
-        }
-      };
+    };
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     return (
@@ -105,7 +100,7 @@ function EditModal({ selectedItem, navigatefalse }) {
                                 <div className="colrow12">
                                     <span className="form-control-span">
                                         {/* <span className="icon"><div className="i"><FaImages/></div></span> */}
-                                        <input id="image" type="file" name="image" accept="image/*" className="form-input" {...register("image", { required: true })} />
+                                        <input id="image" type="file" name="image" accept="image/*" className="form-input" {...register("image")} />
                                         {errors.image && <p style={{ color: 'red', fontSize: 'small' }} >Image is required and must be valid</p>}
 
                                     </span>
@@ -113,7 +108,7 @@ function EditModal({ selectedItem, navigatefalse }) {
                                 <div className="colrow12">
                                     <span className="form-control-span">
                                         {/* <span className="icon"><div className="i"><FaImages/></div></span> */}
-                                        <input id="image" type="file" name="gallery" accept="image/*" className="form-input" {...register("gallery", { required: true })} />
+                                        <input id="image" type="file" name="gallery" accept="image/*" className="form-input" {...register("gallery")} />
                                         {errors.gallery && <p style={{ color: 'red', fontSize: 'small' }} >Image is required and must be valid</p>}
 
                                     </span>
@@ -135,28 +130,12 @@ function EditModal({ selectedItem, navigatefalse }) {
 }
 
 function Tour() {
-  
+
+    const [loadd, setLoadd] = useState(false)
     const [errorMessage, setErrorMessage] = useState('');
 
 
-    const { register, handleSubmit, formState: { errors }} = useForm();
-
-    // const { Tour, setTour } = useContext(TourContent)
-    // const onSubmit = async (body) => {
-    //     //   const data = new FormData();
-
-
-    //     try {
-    //         const { data } = await axios.post('/api/v1/tour/create', body, { headers: { Authorization: 'Bearer ' + localStorage.getItem('access_token') } })
-    //         if (data) {
-    //             console.log({ data });
-    //         }
-    //     } catch (error) {
-    //         console.error({ error })
-    //     }
-
-    // };
-
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
         const formData = new FormData();
         formData.append('name', data.name);
@@ -166,52 +145,84 @@ function Tour() {
         formData.append('duration', data.duration);
         formData.append('backdropImage', data.image[0]); // Assuming 'image' is the name of your input field.
         formData.append('Gallery', data.gallary[0]); // Assuming 'image' is the name of your input field.
-      
+        Confirm.show(
+            'Delete Confim',
+            'Do u want to Delete this Tour?',
+            'Yes',
+            'No',
+            async () => {
+                setLoadd(() => true)
         try {
-          const response = await axios.post('/api/v1/tour/create', formData,{
-            headers:{
-                "Content-Type":"multipart/form-data"
-            }
-          });
-      
-          if (response.data) {
-            console.log('Tour created:', response.data);
-            // You can add code here to handle the success response.
-          }
-        } catch (error) {
-          console.error('Error creating tour:', error);
-          if (error.response && error.response.data) {
-            const errorResponse = error.response.data;
-            const errorMessage = errorResponse.message;
-    
-            // Update the error message in the state
-            setErrorMessage(errorMessage);
-        }
-        }
-      };
-      
+            const response = await axios.post('/api/v1/tour/create', formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            });
 
-    const deletetour = async (id) => {
-               const userConfirmed = window.confirm('Are you sure you want to delete?');
-        if (userConfirmed){
-            try {
-                const { data } = await axios.delete('/api/v1/tour/delete/' + id)
-                if (data) {
-                    
-                    console.log({ data });
-                }
-            } catch (error) {
-                if (error.response && error.response.data) {
-                    const errorResponse = error.response.data;
-                    const errorMessage = errorResponse.message;
-            
-                    // Update the error message in the state
-                    setErrorMessage(errorMessage);
-                }
+            if (response.data) {
+                console.log('Tour created:', response.data);
+                Notify.success(response.data.message);
             }
-            
+        } catch (error) {
+            if (error.response && error.response.data) {
+                const errorResponse = error.response.data;
+                const errorMessage = errorResponse.message;
+                Notify.failure('Error in creating a tour :', errorMessage);
+            }
         }
+        setLoadd(() => false)
+    },
+    () => {
+
+    },
+    {
+    },
+);
+    };
+    if(loadd){
+        Notiflix.Loading.pulse();
+      }
+      else{
+        Notiflix.Loading.remove();
+      }
+
+    const [load,setLoad]=useState(false)
+    const deletetour = async (id) => {
+        Confirm.show(
+            'Delete Confim',
+            'Do u want to Delete this Tour?',
+            'Yes',
+            'No',
+            async () => {
+                setLoad(() => true)
+                try {
+                    const { data } = await axios.delete('/api/v1/tour/delete/'+id )
+                    if (data) {
+                        Notify.success('Tour successfully deleted');
+                        console.log('hy');
+                    }
+                } catch (error) {
+                    if (error.response && error.response.data) {
+                        const errorResponse = error.response.data;
+                        const errorMessage = errorResponse.message;
+                        Notify.failure( 'Error in Deleting a Tour');
+                    }
+                }
+                setLoad(() => false)
+            },
+            () => {
+
+            },
+            {
+            },
+        );
     }
+    if(load){
+        Notiflix.Loading.pulse();
+      }
+      else{
+        Notiflix.Loading.remove();
+      }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -224,10 +235,6 @@ function Tour() {
         setSelectedItem(() => item);
         setIsModalOpen(true);
     };
-
-
-
-
     const navigateadd = () => {
         setIsAddModalOpen(true)
     }
@@ -250,7 +257,7 @@ function Tour() {
     //         if (error.response && error.response.data) {
     //             const errorResponse = error.response.data;
     //             const errorMessage = errorResponse.message;
-        
+
     //             // Update the error message in the state
     //             setErrorMessage(errorMessage);
     //         }
@@ -261,10 +268,12 @@ function Tour() {
     //     FetchData()
     // }, [FetchData])
 
-   const {tours}=useContext(TourContent)
+    const { tours } = useContext(TourContent)
     return (
 
-        <>
+        <><div className="book-now-button12">
+            <div className="a"><span className="sec-btn" onClick={navigateadd}>Add New</span></div>
+        </div>
             {isModalOpen && selectedItem && (
                 <EditModal selectedItem={selectedItem} navigatefalse={navigatefalse} />
             )}
@@ -328,7 +337,7 @@ function Tour() {
                                                 {errors.gallary && <p style={{ color: 'red', fontSize: 'small' }} >Tour Background  is required and must be a Full name</p>}
                                             </span>
                                         </div>
-                                        {errorMessage&& <div style={{ alignItems:'center'}}><p  style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
+                                        {errorMessage && <div style={{ alignItems: 'center' }}><p style={{ color: 'red', fontSize: 'large' }}>{errorMessage}</p></div>}
 
                                         <div className="colrow12">
                                             <button className="sec-btn find-now-btn" type='submit'><span>Edit</span></button>
@@ -373,11 +382,7 @@ function Tour() {
                     </div>
 
                 ))}
-                <div className="book-now-button12">
-                    <div className="a"><span className="sec-btn1" onClick={navigateadd}>Add New</span></div>
 
-
-                </div>
 
             </div>
 
@@ -386,3 +391,4 @@ function Tour() {
 }
 
 export default Tour
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh

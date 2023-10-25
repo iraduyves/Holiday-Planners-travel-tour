@@ -7,6 +7,8 @@ import axios from '../config/axios';
 import { useContext, useState } from 'react';
 import { UserContent } from '../context/user';
 import PropTypes from 'prop-types';
+import Notiflix from 'notiflix';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 
 
@@ -25,21 +27,32 @@ const Login = () => {
 
   // const { setUser } = useContext(UserContent)
   // const navigate = useNavigate()
-  const [load, setLoad] = useState(false)
+  // const [load, setLoad] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm();
+  console.log(loginMutation.isPending);
 
-  // const { loggedUser } = useContext(UserContent)
+  if(loginMutation.isPending   ){
+    Notiflix.Loading.pulse();
+  }
+  else{
+    Notiflix.Loading.remove();
+  }
+
+
   const onSubmit = async (body) => {
 
 
-    try {
 
+
+    // setLoad(() => true)
+    try {
       loginMutation.mutate(body)
-    
     } catch (error) {
       console.log(error);
 
     }
+
+
 
     // setLoad(() => true)
     // try {
@@ -70,7 +83,7 @@ const Login = () => {
     // setLoad(() => false)
 
 
-
+    // setLoad(() => false)
 
   };
 
@@ -85,7 +98,7 @@ const Login = () => {
           </div>
           <div >{errors.email && <p style={{ color: 'red', fontSize: 'small' }} >Email is required and must be valid</p>} </div>
           <div>
-            <Input icon={<><FontAwesomeIcon icon={faLock} className='faicon' /></>} name='name' placeholder='Password' register={register("password", { required: true })} />
+            <Input type='password' icon={<><FontAwesomeIcon icon={faLock} className='faicon' /></>} name='name' placeholder='Password' register={register("password", { required: true })} />
           </div>
           <div>{errors.password && <p style={{ color: 'red', fontSize: 'large' }}>Password is required</p>}</div>
           <div>
@@ -97,9 +110,9 @@ const Login = () => {
           </div>
 
           <div>
-            <button className='sec-btn' disabled={load} >{load ? "loading..." : "login"}</button>
+            <button className='sec-btn' >Login</button>
 
-
+            {/* {load ? (Notiflix.Loading.standard('Loading...', {backgroundColor: 'rgba(0,0,0,0.8)',}) ):"Signup"} */}
           </div>
         </form>
       </div>

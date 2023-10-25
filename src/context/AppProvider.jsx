@@ -1,7 +1,6 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import {useQuery } from "@tanstack/react-query";
 import axios from "../config/axios"
-import { createContext, useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+import { createContext  } from "react";
 
 export const AppContext = createContext();
 
