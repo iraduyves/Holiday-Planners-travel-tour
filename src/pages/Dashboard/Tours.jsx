@@ -145,13 +145,8 @@ function Tour() {
         formData.append('duration', data.duration);
         formData.append('backdropImage', data.image[0]); // Assuming 'image' is the name of your input field.
         formData.append('Gallery', data.gallary[0]); // Assuming 'image' is the name of your input field.
-        Confirm.show(
-            'Delete Confim',
-            'Do u want to Delete this Tour?',
-            'Yes',
-            'No',
-            async () => {
-                setLoadd(() => true)
+        
+        setLoadd(() => true)
         try {
             const response = await axios.post('/api/v1/tour/create', formData, {
                 headers: {
@@ -170,14 +165,7 @@ function Tour() {
                 Notify.failure('Error in creating a tour :', errorMessage);
             }
         }
-        setLoadd(() => false)
-    },
-    () => {
-
-    },
-    {
-    },
-);
+        setLoadd(() => true)
     };
     if(loadd){
         Notiflix.Loading.pulse();

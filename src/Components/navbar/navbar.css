@@ -501,6 +501,29 @@ li {
         top: 80px;
         --padding: 60px;
     }
+   
+}
+@media screen and (max-width: 840px) {
+    .site-header .bottom-header .search-wp .search-icon{
+        display:none;
+        height: 0;
+        width: 0;
+    }
+    .site-header .bottom-header .header-reserve-btn {
+        opacity:0;
+    }
+   
+}
+@media screen and (max-width: 400px) {
+    .site-header .top-header {
+        display:none;
+        height: 0;
+        width: 0;
+    }
+    .site-header .bottom-header {
+        height: 20rem;
+    }
+   
 }
 
 .bottom-header:before {
@@ -1882,7 +1905,12 @@ textarea.form-input {
 .main-contact-sec .left-side {
     padding-top: 70px;
 }
-
+.main-contact-sec .right-side {
+   width: fit-content;
+}
+.main-contact-sec .widget {
+   margin-right:20rem ;
+}
 .contact-form .form-control-span {
     margin-bottom: 30px;
 }
@@ -1989,6 +2017,27 @@ textarea.form-input {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
+}
+@media screen and (max-width: 1000px) {
+    .main-contact-sec > * > .row {
+        display: flex;
+
+        flex-direction:row-reverse;
+    }
+   
+}
+@media screen and (max-width: 900px) {
+   
+    .main-contact-sec .row-right {
+        display: none;
+    }
+    .main-contact-sec .row-left {
+        max-width: 100%;
+    }
+    .main-contact-sec .row {
+        max-width: 100%;
+    }
+   
 }
 
 

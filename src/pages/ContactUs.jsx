@@ -3,7 +3,7 @@ import Input from "../Components/input"
 import { faBook, faEnvelope, faLock, faPhone, faUser } from "@fortawesome/free-solid-svg-icons"
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { FaAngleRight, FaAt, FaEnvelope, FaMapMarkerAlt, FaServicestack } from "react-icons/fa";
+import { FaAngleRight, FaAt, FaEnvelope, FaMapMarkerAlt, FaPhone, FaServicestack } from "react-icons/fa";
 
 
 const ContactUs = () => {
@@ -30,8 +30,8 @@ const ContactUs = () => {
           <div className="row">
             <div className="row-left">
               <div className="left-side">
-                <div className="left-side-box">
-                  <div className="sign1">
+                {/* <div className="left-side-box"> */}
+                  <div className="sign">
 
                     <form >
                       <div>
@@ -56,7 +56,7 @@ const ContactUs = () => {
 
                       </div>
                     </form>
-                  </div>
+                  {/* </div> */}
                 </div>
               </div>
             </div>
@@ -78,17 +78,17 @@ const ContactUs = () => {
                   <div className="line-title">
                     <h4 className="h4-title">Get a Question?</h4>
                   </div>
-                  <p>Do not hesitage to give us a call. We are an expert team and we are happy to talk to you.</p>
+                  <p style={{fontSize:'medium'}}>Do not hesitage to give us a call. We are an expert team and we are happy to talk to you.</p>
                   <ul className="gaq-list-item">
                     <li>
-                      <a href="mailto:holidayplanners@gmail.com" title="holidayplanners@gmail.com">
-                        <div className="i" ><FaEnvelope /></div> iradukundayves11@gmail.com
-                      </a>
+                      
+                        <div style={{color:'black',display:'flex',gap:'1rem'}}><FaEnvelope />iradukundayves11@gmail.com</div> 
+                     
                     </li>
                     <li>
-                      <a href="tel:1234567890" title="+123 456 7890">
-                        <div className="i" ><FaEnvelope /></div>  +(250)782045468
-                      </a>
+                      
+                        <div style={{color:'black',display:'flex',gap:'1rem'}} ><FaPhone/>  +(250)782045468</div>  
+                      
                     </li>
                   </ul>
                 </div>
@@ -134,19 +134,17 @@ const ContactUs = () => {
                   <ul>
                     <li>
                       <div className="a">
-                        <div className="icon"><FaMapMarkerAlt /></div>
+                        
                         54, Bumbogo, Kigali.
                       </div>
                     </li>
                     <li>
                       <div className="a">
-                        <div className="icon"><faPhone /></div>
                         (+250) 782045468
                       </div>
                     </li>
                     <li>
                       <div className="a">
-                        <div className="icon"><FaAt /></div>
                         iradukundayves11@gmail.com
                       </div>
                     </li>
@@ -159,19 +157,16 @@ const ContactUs = () => {
                   <ul>
                     <li>
                       <div className="a">
-                        <div className="icon"><FaMapMarkerAlt /></div>
                         54, Bumbogo, Kigali.
                       </div>
                     </li>
                     <li>
                       <div className="a">
-                        <div className="icon"><faPhone /></div>
                         (+250) 782045468
                       </div>
                     </li>
                     <li>
                       <div className="a">
-                        <div className="icon"><FaAt /></div>
                         iradukundayves11@gmail.com
                       </div>
                     </li>

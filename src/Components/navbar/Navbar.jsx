@@ -3,7 +3,7 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import logo from '/logo.png'
 import logowhite from '/logo-icon-white.svg'
 import '../navbar/navbar.css'
-import {  faCircleXmark, faEnvelope, faMagnifyingGlass, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faCircleXmark, faEnvelope, faMagnifyingGlass, faPhone } from '@fortawesome/free-solid-svg-icons'
 
 import { FaFacebookF } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 
 
 const Navbar = () => {
-  
+
 
     const [isStatic, setIsStatic] = useState(false)
 
@@ -25,6 +25,14 @@ const Navbar = () => {
     useEffect(() => {
         window.addEventListener('scroll', scrolled)
     })
+    let userr = JSON.parse(localStorage.getItem(`isLogin`))
+    let token = userr?.access_token;
+    let userData = userr?.user;
+    const logout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('isLogin')
+        window.location.assign('/login')
+    }
 
     return (
         <header className={`site-header ${!isStatic ? 'static-header' : ''}`}>
@@ -102,14 +110,16 @@ const Navbar = () => {
                                             </div>
                                         </div>
                                     </div>
-                                  
+
                                 </div>
                                 <div className="main-navigation">
                                     <MenuBar />
                                 </div>
                                 <div className="row-right">
-                                  {/* {loggedUser&&   <p style={{fontSize:'large',color:'#C29D59'}} className=''>{loggedUser.email}</p>}
-                                {localStorage.getItem("access_token") && ( <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button>)} */}
+
+                                    {token  &&  userData==='user'&& <p style={{ fontSize: 'large', color: '#C29D59' }} className=''>{userData?.email}</p>}
+                                    {token && <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button> }
+                                
 
                                 </div>
                             </div>
@@ -122,10 +132,10 @@ const Navbar = () => {
 }
 Navbar.propTypes = {
     setIsLoggedIn: PropTypes.func.isRequired,
-  };
+};
 Navbar.propTypes = {
     isLoggedIn: PropTypes.func.isRequired,
-  };
+};
 export default Navbar
 
 

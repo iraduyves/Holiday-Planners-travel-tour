@@ -93,6 +93,19 @@ p {
 
     text-align: center;
 }
+.sign2 {
+    --gap: 2rem;
+
+    padding: var(--gap);
+    border-radius: .5rem;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    width: max-content;
+    max-width: 70%;
+    width: 600px;
+    margin: auto;
+
+    text-align: center;
+}
 .sign1 {
     --gap: 2rem;
     width: max-content;
