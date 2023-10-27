@@ -299,7 +299,7 @@ function Users() {
                             <td>Edit</td>
                             <td>Delete</td>
                         </thead>
-                        {users.map((item, index) => (
+                      {users?.map((item, index) => (
 
 
                             <tbody key={index}>
@@ -325,6 +325,7 @@ function Users() {
 
                             </tbody>
                         ))}
+                    
                     </table>
                     <button className="sec-btn" style={{ cursor: 'pointer' }} onClick={navigateAdd}>ADD NEW USER</button>
                 </div>

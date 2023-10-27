@@ -117,7 +117,7 @@ const Navbar = () => {
                                 </div>
                                 <div className="row-right">
 
-                                    {token  &&  userData==='user'&& <p style={{ fontSize: 'large', color: '#C29D59' }} className=''>{userData?.email}</p>}
+                                    {token  &&  userData.role ==='user'&& <p style={{ fontSize: 'large', color: '#C29D59' }} className=''>{userData?.email}</p>}
                                     {token && <button  className="sec-btn2" style={{fontSize:'small'}} onClick={logout}>logout</button> }
                                 
 

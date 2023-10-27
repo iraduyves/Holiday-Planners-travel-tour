@@ -14,8 +14,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TourContent } from '../../context/Tour';
+import { useForm } from 'react-hook-form';
+import axios from '../../config/axios';
+import Notiflix, { Notify } from 'notiflix';
+
 
 
 // import { useParams } from 'react-router-dom';
@@ -23,6 +27,7 @@ import { TourContent } from '../../context/Tour';
 
 
 const SingleTourPage = () => {
+    const [load, setLoad] = useState(false)
     const { tours} = useContext(TourContent)
 
     const { name } = useParams();
@@ -33,6 +38,33 @@ const SingleTourPage = () => {
     if (!single) {
         return <div>Sorry, this tour does not exist.</div>;
     }
+    let userr = JSON.parse(localStorage.getItem("isLogin"));
+    let token = userr?.access_token;
+    const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
+    const onSubmit = async (body) => {
+        setLoad(() => true)
+        try {
+          const { data } = await axios.post('/api/v1/booking/create',body) 
+          if (data) {
+
+            Notify.success('You are Registered Successfully');
+          }
+        } catch (error) {
+          if (error.response && error.response.data) {
+            const errorResponse = error.response.data;
+            const errorMessage = errorResponse.message;
+            console.log(errorMessage)
+            Notify.failure(errorMessage);
+          }
+        }
+        setLoad(() => false)
+      };
+      if(load){
+        Notiflix.Loading.pulse();
+      }
+      else{
+        Notiflix.Loading.remove();
+      }
 return (
         <>
             <div className="main-banner inner-banner overlay back-image" style={{ backgroundImage: `url("${single.backdropImage}")` }}>
@@ -301,57 +333,52 @@ return (
                                         <h4 className="h4-title">Book This Tour</h4>
                                     </div>
                                     <div className="find-tour-form">
-                                        <form>
+                                        <form onSubmit={handleSubmit(onSubmit)}> 
                                             <div className="row">
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaUser /></div></span>
-                                                        <input type="text" placeholder="Full Name *" className="form-input" required />
+                                                        <input type="text" placeholder="Full Name *" className="form-input" required name='name {...register("name")}' />
                                                     </span>
                                                 </div>
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaEnvelope /></div></span>
-                                                        <input type="email" placeholder="Email *" className="form-input" required />
+                                                        <input type="email" placeholder="Email *" className="form-input" required name='email' {...register("name")} />
                                                     </span>
                                                 </div>
-                                                <div className="colrow12">
-                                                    <span className="form-control-span">
-                                                        <span className="icon"><div className="i"><FaEnvelope /></div></span>
-                                                        <input type="email" placeholder="Confirm Email *" className="form-input" required />
-                                                    </span>
-                                                </div>
+                                                
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaPhone /></div></span>
-                                                        <input type="text" placeholder="Phone *" className="form-input" required />
+                                                        <input type="text" placeholder="Phone *" className="form-input" required name='phone' {...register("phone")} />
                                                     </span>
                                                 </div>
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaCalendar /></div></span>
-                                                        <input type="date" className="form-input" required />
+                                                        <input type="date" className="form-input" required name='date' {...register("date")} />
                                                     </span>
                                                 </div>
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaUserTag /></div></span>
-                                                        <input type="number" className="form-input" placeholder="Numbers Of Tickets" />
+                                                        <input type="number" className="form-input" placeholder="Numbers Of Tickets" name='tickets' {...register("tickets")}/>
                                                     </span>
                                                 </div>
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
-                                                        <textarea className="form-input" placeholder="Message" cols="30" rows="10"></textarea>
+                                                        <textarea className="form-input" placeholder="Message" name='message' cols="30" rows="10 " {...register("message")}></textarea>
                                                     </span>
                                                 </div>
-                                                <div className="colrow12">
+                                                {/* <div className="colrow12">
                                                     <div className="checkbox-item">
                                                         <input type="checkbox" id="check-availability" name="check-availability" value="check-availability" />
                                                         <label htmlFor="check-availability" className="check-box-label">Check Availability</label>
                                                     </div>
-                                                </div>
-                                                <div className="col-lg-12">
-                                                    <button className="sec-btn find-now-btn"><span>Book Now</span></button>
+                                                </div> */}
+                                                <div className="colrow12">
+                                                    <button type='submit' className="sec-btn find-now-btn"><span>Book Now</span></button>
                                                 </div>
                                             </div>
                                         </form>

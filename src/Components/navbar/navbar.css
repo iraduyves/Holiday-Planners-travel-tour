@@ -2002,17 +2002,17 @@ textarea.form-input {
 }
 .colrow5 {
     margin-left: 4rem;
-    flex: 0 0 40%;
-    max-width: 40%;
+    flex: 0 0 10%;
+    max-width: 30%;
     position: relative;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
 }
 .colrow7 {
-    -ms-flex: 0 0 52%;
-    flex: 0 0 52%;
-    max-width: 52%;
+    /* -ms-flex: 0 0 57%; */
+    flex: 0 0 53%;
+    max-width: 58%;
     position: relative;
     width: 100%;
     padding-right: 15px;

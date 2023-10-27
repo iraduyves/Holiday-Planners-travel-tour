@@ -219,7 +219,7 @@ function Tour() {
 
     const handleEditClick = (item) => {
         // Open the modal and set the selected item
-        console.log({ item })
+        // console.log({ item })
         setSelectedItem(() => item);
         setIsModalOpen(true);
     };
@@ -379,3 +379,4 @@ function Tour() {
 }
 
 export default Tour
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
