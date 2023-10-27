@@ -380,4 +380,3 @@ function Tour() {
 
 export default Tour
 
-j
