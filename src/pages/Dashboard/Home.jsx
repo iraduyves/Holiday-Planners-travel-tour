@@ -4,9 +4,12 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
   from 'recharts';
 import './dashboard.css'
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaClock, FaUserFriends } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { TourContent } from '../../context/Tour';
+import { UserContent } from '../../context/user';
+
 
 // import { tourlist } from '../Tourpage/Tourlist';
 // import Tour from '../Tourpage/Tour';
@@ -14,6 +17,7 @@ import { Link } from 'react-router-dom';
 
 
 function Home({user}) {
+  
   // const [tours, setTours] = useState(tourlist);
 
   // const handleEditTour = (index, updatedTour) => {
@@ -28,10 +32,18 @@ function Home({user}) {
   //   setTours(updatedTours);
   // };
 
+const {tours}=useContext(TourContent)
+const {booking}=useContext(TourContent)
+const {users}=useContext(UserContent)
+const { contact} = useContext(TourContent)
+
+const rwandaTours = tours?.filter(tour => tour?.Title === 'Rwanda');
+const countrwandatour =(rwandaTours?.length)*1000
+
   const data = [
     {
-      name: 'Page A',
-      uv: 7500,
+      name: "Rwanda",
+      uv:  {countrwandatour},
       pv: 7500,
       amt: 9000,
     },
@@ -42,7 +54,7 @@ function Home({user}) {
       amt: 2210,
     },
     {
-      name: 'Page C',
+      name: 'Dubai',
       uv: 2000,
       pv: 9800,
       amt: 2290,
@@ -86,28 +98,28 @@ function Home({user}) {
             <h3>Bookings</h3>
             <BsFillArchiveFill className='card_icon' />
           </div>
-          <h1>300</h1>
+          <h1>{booking?.length}</h1>
         </div>
         <div className='card'>
           <div className='card-inner'>
             <h3>Tours</h3>
             <BsFillGrid3X3GapFill className='card_icon' />
           </div>
-          <h1>12</h1>
+          <h1>{tours?.length}</h1>
         </div>
         <div className='card'>
           <div className='card-inner'>
             <h3>Users</h3>
             <BsPeopleFill className='card_icon' />
           </div>
-          <h1>33</h1>
+          <h1>{users?.length}</h1>
         </div>
         <div className='card'>
           <div className='card-inner'>
-            <h3>ALERTS</h3>
+            <h3>CONTACTS</h3>
             <BsFillBellFill className='card_icon' />
           </div>
-          <h1>42</h1>
+          <h1>{contact?.length}</h1>
         </div>
       </div>
 
@@ -169,3 +181,4 @@ export default Home
 Home.propTypes = {
   user: PropTypes.func.isRequired,
 };
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh

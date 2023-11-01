@@ -8,12 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import { UserContent } from '../../context/user.jsx';
 
 
+
 function Header({ OpenSidebar }) {
   const navigate = useNavigate()
 
   let userr=JSON.parse(localStorage.getItem("isLogin"));
   let token =userr?.access_token;
   let userData=userr?.user;
+  console.log(userData);
 
   useLayoutEffect(()=>{
     console.log(userData?.role);

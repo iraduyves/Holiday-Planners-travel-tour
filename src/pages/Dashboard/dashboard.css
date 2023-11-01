@@ -273,6 +273,7 @@ body {
   /* z-index: 2; */
 }
 .main-container .row-right .right-side .widget {
+  /* font-weight: ; */
   position: absolute;
   left: 0;
   z-index: 10;

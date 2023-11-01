@@ -83,6 +83,7 @@ export const tourlistMock = [
    
    const Tourlist = () => {
     const { tours} = useContext(TourContent)
+    console.log(tours);
 
     return (
         <div className="main-tour-list pb-70">

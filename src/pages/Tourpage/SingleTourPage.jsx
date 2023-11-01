@@ -1,4 +1,4 @@
-import { FaAngleRight, FaBookOpen, FaCalendar, FaCameraRetro, FaCheck, FaClock, FaEnvelope, FaInfoCircle, FaMapMarker, FaPhone, FaSun, FaTimes, FaUser, FaUserFriends, FaUserPlus, FaUserTag } from 'react-icons/fa'
+import { FaAngleRight, FaBookOpen, FaCalendar, FaCameraRetro, FaCheck, FaClock, FaEnvelope, FaInfoCircle, FaMapMarker, FaPaypal, FaPhone, FaSun, FaTimes, FaUser, FaUserFriends, FaUserPlus, FaUserTag } from 'react-icons/fa'
 import '../../Components/navbar/navbar.css'
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -19,6 +19,9 @@ import { TourContent } from '../../context/Tour';
 import { useForm } from 'react-hook-form';
 import axios from '../../config/axios';
 import Notiflix, { Notify } from 'notiflix';
+import Select from '../../Components/input/select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 
 
@@ -32,22 +35,40 @@ const SingleTourPage = () => {
 
     const { name } = useParams();
     console.log(tours,name);
-    // const tour = tourlist[name];
-    const single = tours.find((item) => item._id  == name);
+    const single = tours.find((item) => item._id  === name);
     // console.log(single);
     if (!single) {
         return <div>Sorry, this tour does not exist.</div>;
     }
     let userr = JSON.parse(localStorage.getItem("isLogin"));
     let token = userr?.access_token;
+    let userData=userr?.user;
+    console.log(userData?.email);
     const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
-    const onSubmit = async (body) => {
-        setLoad(() => true)
+    const onSubmit = async (data) => {
+        const formData = new FormData();
+        formData.append('date', data.Date);
+        formData.append('tourID', `${single._id}`)
+        formData.append('status', `pending`)
+        formData.append('paymentMethod', `VISA CARD`)
+        // formData.append('isPaid', `true`)
+        formData.append('numberOfTickets', data.NumberOfTicket);
+
+
         try {
-          const { data } = await axios.post('/api/v1/booking/create',body) 
+          const { data } = await axios.post('api/v1/booking/create',formData,
+          {
+            headers:{
+                Authorization:"Bearer "+token,
+                "Content-Type": "multipart/form-data",
+                //  Email:`${userData.email}`,
+                //  phone:`${userData.phone}`,
+                //  fullName:`${userData.fullName}`,
+            }
+          }) 
           if (data) {
 
-            Notify.success('You are Registered Successfully');
+            Notify.success('you have booked Successfully');
           }
         } catch (error) {
           if (error.response && error.response.data) {
@@ -338,7 +359,7 @@ return (
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaUser /></div></span>
-                                                        <input type="text" placeholder="Full Name *" className="form-input" required name='name {...register("name")}' />
+                                                        <input type="text" placeholder="Full Names*" className="form-input" required name='name' {...register("name")} />
                                                     </span>
                                                 </div>
                                                 <div className="colrow12">
@@ -357,15 +378,16 @@ return (
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaCalendar /></div></span>
-                                                        <input type="date" className="form-input" required name='date' {...register("date")} />
+                                                        <input type="date" className="form-input" required name='Date' {...register("Date")} />
                                                     </span>
                                                 </div>
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <span className="icon"><div className="i"><FaUserTag /></div></span>
-                                                        <input type="number" className="form-input" placeholder="Numbers Of Tickets" name='tickets' {...register("tickets")}/>
+                                                        <input type="number" className="form-input" placeholder="Numbers Of Tickets" name='NumberOfTicket' {...register("NumberOfTicket")}/>
                                                     </span>
                                                 </div>
+                                            
                                                 <div className="colrow12">
                                                     <span className="form-control-span">
                                                         <textarea className="form-input" placeholder="Message" name='message' cols="30" rows="10 " {...register("message")}></textarea>

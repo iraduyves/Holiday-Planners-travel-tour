@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import Notiflix, { Confirm, Notify } from 'notiflix';
 // eslint-disable-next-line react/prop-types
 function EditModal({ selectedItem, navigatefalse }) {
+
     const onSubmit = async (data) => {
         const formData = new FormData();
         console.log(data);
@@ -19,7 +20,7 @@ function EditModal({ selectedItem, navigatefalse }) {
         formData.append('Gallery', data.gallery[0]);
 
         try {
-            const response = await axios.put(`/api/v1/tour/update/` + selectedItem._id, formData, {
+            const response = await axios.put(`/api/v1/tour/update?fieldName=_id&value=${selectedItem._id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -218,8 +219,6 @@ function Tour() {
     const [selectedItem, setSelectedItem] = useState(null);
 
     const handleEditClick = (item) => {
-        // Open the modal and set the selected item
-        // console.log({ item })
         setSelectedItem(() => item);
         setIsModalOpen(true);
     };
@@ -259,7 +258,7 @@ function Tour() {
     const { tours } = useContext(TourContent)
     return (
 
-        <><div className="book-now-button12">
+        <><div className="book-now-button12" sty>
             <div className="a"><span className="sec-btn" onClick={navigateadd}>Add New</span></div>
         </div>
             {isModalOpen && selectedItem && (
@@ -340,7 +339,7 @@ function Tour() {
                 </div>
             )}
             <div className='row1'>
-                {tours.map((item, index) => (
+                {tours?.map((item, index) => (
                     <div className="colrow61" key={index}>
                         <div className="tour-box1">
                             <div className="tour-box-image1 back-image1" style={{ backgroundImage: `url("${item.backdropImage}")` }}><span className="discount-label">15%</span></div>

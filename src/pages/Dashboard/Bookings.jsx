@@ -1,8 +1,9 @@
 import { FaCalendar, FaEdit, FaEnvelope, FaPenAlt, FaPhone,  FaTrashAlt, FaUserEdit } from 'react-icons/fa'
 import './book.css'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { TourContent } from '../../context/Tour';
 
-export const bookings = [
+export const bookingsMock = [
    
 
     {
@@ -67,6 +68,21 @@ export const bookings = [
 ];
 
 const Bookings = () => {
+
+    const { booking} = useContext(TourContent)
+    let userr = JSON.parse(localStorage.getItem("isLogin"));
+    let token = userr?.access_token;
+    let userData=userr?.user;
+     console.log(userData.email);
+     console.log(userData._id);
+     const { tours} = useContext(TourContent)
+    //  const single=[]
+    //  tours.map ((itemss,index)=>(
+
+    //     single = tours.find((items) => items._id  == booking._id)
+    //      ))
+    //      console.log(single?.Title)
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate =()=> {
@@ -149,29 +165,30 @@ const Bookings = () => {
                     <table className="bookings">
                         <thead>
                             <td>Image</td>
-                            <td>Name</td>
                             <td>Email</td>
                             <td>Phone</td>
                             <td>Date</td>
                             <td>Tickets</td>
                             <td>Message</td>
+                            <td>Name</td>
                             <td>Edit</td>
                             <td>Delete</td>
                         </thead>
-                        {bookings.map((item,index)=>( 
+                        {booking?.map((item,index)=>(  
+
                         <tbody key={index}>
                             <tr>
                                 <td>
                                     <div className="img-box-small">
-                                       <img src={item.img} alt=""/>
+                                       <img src="https://thumbs.dreamstime.com/z/close-up-portrait-young-rasta-boy-22152046.jpg?w=992" alt=""/>
                                     </div>
                                 </td>
-                                <td>{item.name}</td>
-                                <td> {item.email}</td>
-                                <td>{item.phone}</td>
-                                <td>{item.date}</td>
-                                <td>{item.ticket}</td>
-                                <td>{item.message}</td>
+                                <td> {userData.email}</td>
+                                <td>{userData.phone}</td>
+                                <td>{item.Date}</td>
+                                <td>{item.NumberOfTicket}</td>
+                                <td>{item.Status}</td>
+                                <td>Thanks in advance!</td>
                                 <td>
                                     <button type="submit" className="i" onClick={navigate} style={{cursor:'pointer'}}><FaEdit className='fa-edit'/></button>
                                 </td>
@@ -182,6 +199,7 @@ const Bookings = () => {
                             </tr>
                            
                         </tbody>
+                      
                     ))}
                     </table>
                 </div>

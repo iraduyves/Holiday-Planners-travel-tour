@@ -19,6 +19,7 @@ import { useState } from 'react'
 import Bookings from './pages/Dashboard/Bookings'
 import Users from './pages/Dashboard/Users'
 import About from './pages/About'
+import Contacts from './pages/Dashboard/Contacts'
 
 // import AppProvider from './context/AppProvider'
 
@@ -78,6 +79,7 @@ export function App() {
           <Route index element={<Home />} />
           <Route path='/dashboard/tours' element={<Tours />} />
           <Route path='/dashboard/bookings' element={<Bookings />} />
+          <Route path='/dashboard/contacts' element={<Contacts/>} />
           <Route path='/dashboard/users' element={<Users />} />
         </Route>
       </Routes>

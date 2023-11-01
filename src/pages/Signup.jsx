@@ -50,7 +50,7 @@ const Signup = () => {
         <h1>Sign up</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <Input icon={<><FontAwesomeIcon icon={faChessPawn} className='faicon' /></>} name='name' placeholder='name' register={register("name", { required: true })} />
+            <Input icon={<><FontAwesomeIcon icon={faChessPawn} className='faicon' /></>} name='fullName' placeholder='Full Name' register={register("fullName", { required: true })} />
             {errors.name && <p style={{ color: 'red', fontSize: 'small' }} >Your  is required and must be a Full name</p>}
           </div>
           <div>

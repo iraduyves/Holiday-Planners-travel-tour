@@ -26,9 +26,9 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <Link to='/dashboard' >
                         <BsGrid1X2Fill className='icon' /> Dashboard
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
 
@@ -40,6 +40,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                 <li className='sidebar-list-item'>
                     <Link to='/dashboard/bookings' >
                         <BsListCheck className='icon' /> Bookings
+                    </Link>
+                </li>
+                <li className='sidebar-list-item'>
+                    <Link to='/dashboard/contacts' >
+                        <BsListCheck className='icon' /> Contacts
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
@@ -65,9 +70,9 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                     </a>
                 </li>
                 <li className='sidebar-list-item' onClick={logout}>
-                    
-                        <BiSolidLogOutCircle className='icon' /> Logout
-                   
+
+                    <BiSolidLogOutCircle className='icon' /> Logout
+
                 </li>
             </ul>
         </aside>

@@ -12,7 +12,33 @@ export default function TourProvider({ children }) {
   const { data: tours } = useQuery({
     queryKey: ["tours"],
     queryFn: async () => {
-      const res = await axios.get('/api/v1/tour/');
+      const res = await axios.get('/api/v1/tour');
+      return res.data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      Notify.failure(error.response.data.message);
+  },
+  });
+  const { data: contact } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: async () => {
+      const res = await axios.get('/api/v1/contact');
+      return res.data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      Notify.failure(error.response.data.message);
+  },
+  });
+  const { data: booking } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: async () => {
+      const res = await axios.get('/api/v1/booking/view');
       return res.data;
     },
     onSuccess: (data) => {
@@ -25,7 +51,7 @@ export default function TourProvider({ children }) {
 
 
   return (
-    <TourContent.Provider value={{ tours }}>
+    <TourContent.Provider value={{ tours,booking,contact }}>
       {children}
     </TourContent.Provider>
   )

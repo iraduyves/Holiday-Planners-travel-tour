@@ -36,7 +36,7 @@ export default function UserProvider({ children }) {
     });
     let userr = JSON.parse(localStorage.getItem("isLogin"));
     let token = userr?.access_token;
-    console.log(token);
+    // console.log(token);
     /* Get All Users*/
     const { data: users } = useQuery({
         queryKey: ["users"],
@@ -55,7 +55,7 @@ export default function UserProvider({ children }) {
         },
         onSuccess: (data) => {
 
-            console.log(data);
+            // console.log(data);
         },
     });
 
